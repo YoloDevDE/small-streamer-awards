@@ -141,7 +141,9 @@ app.get('/api/prize-categories', (req, res) => {
         res.json({success: true, categories: results});
     });
 });
-
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(projectRoot, 'public', 'S4TEST.html'));
+});
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
