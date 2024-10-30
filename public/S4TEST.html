@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<link rel="icon" href="images/ssa2.png" type="image/png">
+    <link rel="icon" href="images/ssa2.png" type="image/png">
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <!-- /.website title -->
     <title>Small Stream Awards</title>
@@ -80,10 +80,10 @@
             text-decoration: none;
             cursor: pointer;
         }
-		.blurred {
-    filter: blur(2px);
-    pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
-}
+        .blurred {
+            filter: blur(2px);
+            pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
+        }
         /* Form styling */
         .form-group {
             margin-bottom: 15px;
@@ -160,7 +160,7 @@
 
         /* Style for the Login link to look like a button */
         .login-btn {
-			padding: 0.5em;
+            padding: 0.5em;
             color: rgba(167, 122, 0, 0.596);
             margin-top: 3em;
             margin-bottom: 0em;
@@ -177,9 +177,9 @@
         }
 
         .user-info-container {
-			padding: 0.5em;
-			margin-left: auto;
-    		margin-right: auto;
+            padding: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
             width: fit-content;
             color: #ffffff85;
             border-radius: 10px; /* Rounded corners */
@@ -194,7 +194,7 @@
         }
 
         .login-btn:hover {
-			transform: scale(1.05); /* Leichter Hover-Effekt */
+            transform: scale(1.05); /* Leichter Hover-Effekt */
             background-color: #a829972a; /* Slightly darker yellow for hover effect */
             cursor: pointer;
         }
@@ -363,7 +363,7 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase active">
+            <div class="phase nope">
                 <h4>Clip Einsendung</h4>
                 <!-- <i class="icon fas fa-tasks"></i> -->
                 <span>Phase 2
@@ -372,7 +372,7 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase">
+            <div class="phase active">
                 <h4>Voting</h4>
                 <!-- <i class="icon fas fa-chart-line"></i> -->
                 <span>Phase 3</span>
@@ -416,7 +416,7 @@
             </div>
             <h1>Vote jetzt für die besten Clips!</h1>
             <h2>Voting Schluss in:</h2>
-            
+
             <div id="timer">
                 <span id="days"></span> Tage
                 <span id="hours"></span> Stunden
@@ -425,7 +425,7 @@
             </div>
 
             <!-- Button to start voting -->
-            <button id="start-voting-btn" onclick="startVoting()">Zum Voting</button>
+            <button class="start-voting-btn" id="start-voting-btn" onclick="startVoting()">Zum Voting</button>
         </div>
 
         <!-- Voting Content will be inserted dynamically after clicking the "Zum Voting" button -->
@@ -433,21 +433,26 @@
             <div class="vct" id="voting-category-title">
                 <span class="category-label">KATEGORIE:</span> <span id="category-name">Funny Moment</span>
             </div>
-            
+            <section id="Clip">
+                <div id="selected-clip-container" style="display: none;">
+                    <!-- Der ausgewählte Clip wird hier dynamisch eingefügt -->
+                </div>
+            </section>
+
             <div id="clips-container"></div>
-        
+
             <div class="navigation-buttons">
                 <button id="prev-category-btn" style="display:none;" onclick="prevCategory()">Zurück</button>
                 <button id="next-category-btn" onclick="nextCategory()">Weiter</button>
             </div>
         </div>
-        
+
 
         <!-- After voting all categories -->
-        <div id="voting-summary" style="display:none;">
+        <div class="voting-summary" id="voting-summary" style="display:none;">
             <h2>Deine gewählten Clips</h2>
-            <ul id="chosen-clips-list"></ul>
-            <button id="submit-vote-btn" onclick="submitVote()">Abstimmung absenden</button>
+            <ul class="chosen-clips-list" id="chosen-clips-list"></ul>
+            <button class="submit-vote-btn" id="submit-vote-btn" onclick="submitVote()">Abstimmung absenden</button>
         </div>
 
         <!-- After submitting vote -->
@@ -512,7 +517,7 @@
 
 <div id="feature">
     <div id="team-section">
-		<div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 text-center team-title">
                     <h2>Team</h2>
@@ -580,18 +585,18 @@
                         <h4>TheRealJackson</h4>
 
                     </div>
-                    <!-- <div class="team-member">
+                    <div class="team-member">
                         <div class="team-status">
                             <p>Network</p>
                         </div>
                         <a href="https://www.twitch.tv/s4_froschoderso">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a0f1e53-2f64-4817-a1bd-e3129144ead4-profile_image-70x70.png"
-                                alt="Member 1">
+                                 alt="Member 1">
                         </a>
                         <h4>Frosch</h4>
-          
-                    </div> -->
+
+                    </div>
                     <div class="team-member">
                         <div class="team-status">
                             <p>Developer</p>
@@ -602,6 +607,18 @@
                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/3b5d2a34-6960-425f-b7ba-bc9d4f7b6b98-profile_image-70x70.png">
                         </a>
                         <h4>Timo</h4>
+
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Show</p>
+                        </div>
+                        <a href="https://www.twitch.tv/pedaale">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/aaa6d17d-0495-4214-ac0d-56a6d79b9695-profile_image-70x70.png"
+                                 alt="Member 1">
+                        </a>
+                        <h4>Pedaale</h4>
 
                     </div>
 
@@ -751,7 +768,7 @@
                         <h4>zflockii</h4>
 
                     </div>
-                    
+
                     <div class="team-member">
                         <a href="https://www.twitch.tv/marcelements">
 
@@ -768,7 +785,7 @@
                         <h4>jamienichtjames</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/danielvansnipes">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/e7543e78-0d98-414c-8600-c623782ba599-profile_image-70x70.png">
@@ -784,7 +801,7 @@
                         <h4>Wettermann_</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/getrekt2104">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4760fdc7-483e-4d40-983d-cf9ec4566ccd-profile_image-70x70.png">
@@ -792,7 +809,7 @@
                         <h4>GetRekt2104</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/styxenia">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/1e386519-eb4a-42b7-9129-bef29dc45b97-profile_image-70x70.png">
@@ -800,7 +817,7 @@
                         <h4>StyXenia</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/quertixxttv">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/71559037-6618-4fe8-a7e4-acb77be0c807-profile_image-70x70.png">
@@ -808,7 +825,7 @@
                         <h4>Quertixxttv</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/kyrox_at">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b7e9b0f9-34e6-4e15-9010-73ac39f163b6-profile_image-70x70.png">
@@ -816,7 +833,7 @@
                         <h4>Kyrox_at</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/zlogischsw">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/ade95b7f-bf20-46bf-a548-192bee0e61f1-profile_image-70x70.png">
@@ -824,7 +841,7 @@
                         <h4>zLogischSW</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/sirexpert_">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fa335c8c-3ca8-4ddf-a212-0146c2f88484-profile_image-70x70.png">
@@ -832,7 +849,7 @@
                         <h4>Sirexpert_</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/einnetro">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fef1bcf1-daf2-4bab-94ee-4d58c473ce2e-profile_image-70x70.png">
@@ -840,7 +857,7 @@
                         <h4>EinNetro</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/2_flying_uwe">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/97706d4b-15f3-4117-a356-168f6f52e62c-profile_image-70x70.png">
@@ -848,7 +865,7 @@
                         <h4>2_flying_uwe</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/uzunaa">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/eae79125-f155-49bc-b217-4868e59462d5-profile_image-70x70.jpeg">
@@ -856,7 +873,7 @@
                         <h4>Uzunaa</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/clayten">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4aee2d3d-773b-40e8-8617-d18061eda94b-profile_image-70x70.png">
@@ -864,7 +881,7 @@
                         <h4>Clayten</h4>
 
                     </div>
-					<div class="team-member">
+                    <div class="team-member">
                         <a href="https://www.twitch.tv/verboxter">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b873b839-9328-4c34-be6c-14d20f754c43-profile_image-70x70.png">
@@ -874,107 +891,107 @@
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/einfachdings">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/13be68fd-faa7-49a1-b51d-9a53125837f1-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>einfachdings</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/miilanee">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6db9bd81-1798-495c-8881-2e4d07b7b7ee-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>miilanee</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/mdracon">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e170e0ae-4671-41de-adc8-3f5094734f3c-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>MDracon</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/bottee__">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fd013118-b3ad-47f9-aec5-1c9bd9fb3ea2-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>bottee__</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/derdickemichiiii">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3992fcc9-6de5-4a45-b976-dcba1cf30aed-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>DerDickeMichiiii</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/bymaqical">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0188dc19-9ecb-42fd-a272-a37423d961e5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>byMaqical</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/erdnusskopp/videos">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/277c351c-c1d0-4147-9990-ff7b734b2b62-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>ErdnussKopp</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/juzudo">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0bf89d76-2cfb-46c3-9d5d-92b2c09d66a5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>juzudo</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/pilotenluz">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/beb825bb-92d5-4106-ab77-e916beef0366-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Pilotenluz</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/byjasmiiiin">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/b19b8983-3a2e-43cf-b5f9-4d56594327c5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>ByJasmiiiin</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/oparicoyt">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c50365fa-8bb6-48a0-b44b-90b05c306a19-profile_image-70x70.jpeg" alt="Member 1">
                         </a>
                         <h4>OpaRicoYT</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/yuukiwuu">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a062e54-8afd-4de0-959d-d5f04b482c76-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>YuukiWuu</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/papriga">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fdac493d-5de0-41c9-92a8-4cdf96898a5f-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>papriga</h4>
-          
+
                     </div>
                     <!-- <div class="team-member">
                         <a href="https://www.twitch.tv/lucblauhd">
@@ -986,116 +1003,156 @@
                     </div> -->
                     <div class="team-member">
                         <a href="https://www.twitch.tv/schmuli__">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fcb02f70-fd82-4b77-8bc8-f2aa23f9b242-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>schmuli__</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/fylumenius">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/f2951347-820b-428a-a2bc-e8fa709bba2e-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Fylumenius</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/jan0schi">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/d32bd503-24aa-42d0-9a23-ba3a68bd803c-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Jan0schi</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/katrinkatjuscha">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf1820c1-06f6-45e0-8d27-230ba7e8662e-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>KatrinKatjuscha</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/dreix31">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/7de16db1-55e4-4539-8f37-07e085086ab5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>DreiX31</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/hynamorii">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e5aebb7d-ce51-497a-ab63-d9d8b2b7d235-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Hynamorii</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/mareex_">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/8727b1eb-8f09-43f6-9b63-8c5347b9ecc1-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>mareex_</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/angieeeeee">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c872d728-8455-4c43-970c-290868c8e5f5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>angieeeeee</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/lexoleni">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/d9b19a4c-317e-4cef-be71-667e7ec2670b-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>LexoLeni</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/pacboya1">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6d8e421e-b09a-46b9-819d-918fdb411a44-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>PacboyA1</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/spaddyzockt">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/34022f1c-580b-4476-a3b7-413578cefb1a-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Spaddyzockt</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/lordzaros_">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1f66202-c2c5-46ca-9fe2-4218c0ddb62c-profile_image-70x70.jpeg" alt="Member 1">
                         </a>
                         <h4>lordzaros_</h4>
-          
+
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/vanutella">
-          
+
                             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf099fd1-e3a9-439b-baf2-dd6bd3cfbbc2-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>vanutella</h4>
-          
+
                     </div>
-                    
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/jamy_mit_y">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fe114ba9-d85c-437f-9899-c8c231665347-profile_image-70x70.jpeg" alt="Member 1">
+                        </a>
+                        <h4>Jamy_mit_Y</h4>
+
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/schmuli__">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fcb02f70-fd82-4b77-8bc8-f2aa23f9b242-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>schmuli__</h4>
+
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/njushka">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1bad6844-2c03-4b0b-ab82-1632f420f0a3-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>njushka</h4>
+
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/mommmme">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3fe48061-f230-4802-a9e9-e19375399de6-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>MOMMMME</h4>
+
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/ohayo_vt">
+
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/9a80bbab-01b8-4fcd-b45f-7c4e1a36944b-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>OHAYO_vt</h4>
+
+                    </div>
+
 
 
 
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </div>
@@ -1156,9 +1213,9 @@
 <!-- /.footer -->
 <a class="bugy" href="https://docs.google.com/forms/u/0/d/e/1FAIpQLScG-FVDVAo3qGZuGjZ-aCE1B4v9eouf-2tvqjpnLpkx0B35nw/formResponse"><img alt="logo" src="images/bug.png"></a>
 <footer id="footer">
-    
+
     <div class="container">
-        
+
 
         <div class="col-sm-4 col-sm-offset-4">
             <!-- /.social links -->
@@ -1192,59 +1249,59 @@
         </div>
         <h3>Team Mitglieder</h3>
 
-    <div class="team-member-impressum">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png" alt="Frittiertboy">
-        <div class="team-info">
-            <h4>Frittiertboy</h4>
-            <p>Founder</p>
-            <p><a href="mailto:Frittiertboy@smallstreamawards.de">Fritiertboy@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png" alt="Frittiertboy">
+            <div class="team-info">
+                <h4>Frittiertboy</h4>
+                <p>Founder</p>
+                <p><a href="mailto:Frittiertboy@smallstreamawards.de">Fritiertboy@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="team-member-impressum">
-        <img src="https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/3x.gif" alt="S4MARON">
-        <div class="team-info">
-            <h4>S4MARON</h4>
-            <p>Founder</p>
-            <p><a href="mailto:S4MARON@smallstreamawards.de">S4MARON@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/3x.gif" alt="S4MARON">
+            <div class="team-info">
+                <h4>S4MARON</h4>
+                <p>Founder</p>
+                <p><a href="mailto:S4MARON@smallstreamawards.de">S4MARON@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="team-member-impressum">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/a5e46b9e-9c16-44cc-8af6-d14aa6889402-profile_image-70x70.png" alt="Cpt. Kontrollauge">
-        <div class="team-info">
-            <h4>Cpt. Kontrollauge</h4>
-            <p>SEO</p>
-            <p><a href="mailto:Sr.Martin@smallstreamawards.de">Sr.Martin@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/a5e46b9e-9c16-44cc-8af6-d14aa6889402-profile_image-70x70.png" alt="Cpt. Kontrollauge">
+            <div class="team-info">
+                <h4>Cpt. Kontrollauge</h4>
+                <p>SEO</p>
+                <p><a href="mailto:Sr.Martin@smallstreamawards.de">Sr.Martin@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="team-member-impressum">
-        <img src="images/no.png" alt="Herr GHG">
-        <div class="team-info">
-            <h4>Herr GHG</h4>
-            <p>Network</p>
-            <p><a href="mailto:HerrGHG@smallstreamawards.de">HerrGHG@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="images/no.png" alt="Herr GHG">
+            <div class="team-info">
+                <h4>Herr GHG</h4>
+                <p>Network</p>
+                <p><a href="mailto:HerrGHG@smallstreamawards.de">HerrGHG@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="team-member-impressum">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/f45e03ed-e548-4da7-b602-1f965d8e62f9-profile_image-70x70.png" alt="TheRealJackson">
-        <div class="team-info">
-            <h4>TheRealJackson</h4>
-            <p>Network</p>
-            <p><a href="mailto:contact@smallstreamawards.de">contact@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/f45e03ed-e548-4da7-b602-1f965d8e62f9-profile_image-70x70.png" alt="TheRealJackson">
+            <div class="team-info">
+                <h4>TheRealJackson</h4>
+                <p>Network</p>
+                <p><a href="mailto:contact@smallstreamawards.de">contact@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="team-member-impressum">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3b5d2a34-6960-425f-b7ba-bc9d4f7b6b98-profile_image-70x70.png" alt="Timo">
-        <div class="team-info">
-            <h4>Timo</h4>
-            <p>Developer</p>
-            <p><a href="mailto:yolo@smallstreamawards.de">yolo@smallstreamawards.de</a></p>
+        <div class="team-member-impressum">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3b5d2a34-6960-425f-b7ba-bc9d4f7b6b98-profile_image-70x70.png" alt="Timo">
+            <div class="team-info">
+                <h4>Timo</h4>
+                <p>Developer</p>
+                <p><a href="mailto:yolo@smallstreamawards.de">yolo@smallstreamawards.de</a></p>
+            </div>
         </div>
-    </div>
 
         <h2>EU-Streitschlichtung</h2>
         <p>
@@ -1444,7 +1501,7 @@
                     const $userInfo = $('#user-info');
                     const $loginButton = $('#openLoginPopup');
                     const $usernameElement = $('#username');
-                    const $submissionContainer = $('.submission-container');
+                    const $submissionContainer = $('.start-voting-btn');
 
                     if (data.user) {
                         // User is logged in, display user info
@@ -1454,7 +1511,7 @@
                         $usernameElement.text(data.user.username);
                     } else {
                         // User is not logged in, show login button
-						$submissionContainer.addClass('blurred');
+                        $submissionContainer.addClass('blurred');
                         $userInfo.hide();
                         $loginButton.show();
                     }
@@ -1679,303 +1736,318 @@
     fetchCategories();
 
     document.addEventListener('DOMContentLoaded', function () {
-    const clipTarget = 500;  // Die Zielzahl für Clips
-    const userTarget = 200;  // Die Zielzahl für User
-    const duration = 5000;   // Dauer des Hochzählens in Millisekunden (7 Sekunden)
-    
-    function countUp(elementId, target) {
-        const element = document.getElementById(elementId);
-        let startValue = 0;
-        const increment = target / (duration / 100); // Steigerung alle 100ms
+        const clipTarget = 500;  // Die Zielzahl für Clips
+        const userTarget = 200;  // Die Zielzahl für User
+        const duration = 5000;   // Dauer des Hochzählens in Millisekunden (7 Sekunden)
 
-        const counter = setInterval(() => {
-            startValue += increment;
-            if (startValue >= target) {
-                element.textContent = `+${target}`; // Setze das finale Ziel mit einem "+" Zeichen
-                clearInterval(counter);
-            } else {
-                element.textContent = `+${Math.floor(startValue)}`;
-            }
-        }, 100); // Alle 100ms aktualisieren
-    }
+        function countUp(elementId, target) {
+            const element = document.getElementById(elementId);
+            let startValue = 0;
+            const increment = target / (duration / 100); // Steigerung alle 100ms
 
-    countUp('clip-count', clipTarget);
-    countUp('user-count', userTarget);
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    const rightInfoContainer = document.querySelector('.info-container-right'); // Rechter Container
-    const dropBtn = document.getElementById('category-btn');
-
-    // Funktion zum Setzen des z-index auf -1
-    function disableInteractions() {
-        rightInfoContainer.style.zIndex = '-1';  // z-index auf -1 setzen
-    }
-
-    // Funktion zum Zurücksetzen des z-index auf 1
-    function enableInteractions() {
-        rightInfoContainer.style.zIndex = '1';  // z-index auf 1 zurücksetzen
-    }
-
-    // Ereignis für das Öffnen des Dropdown-Menüs
-    dropBtn.addEventListener('click', function () {
-        dropdownMenu.classList.toggle('show'); // Dropdown sichtbar machen
-        if (dropdownMenu.classList.contains('show')) {
-            disableInteractions(); // z-index auf -1 setzen
-        } else {
-            enableInteractions(); // z-index wieder auf 1 setzen
+            const counter = setInterval(() => {
+                startValue += increment;
+                if (startValue >= target) {
+                    element.textContent = `+${target}`; // Setze das finale Ziel mit einem "+" Zeichen
+                    clearInterval(counter);
+                } else {
+                    element.textContent = `+${Math.floor(startValue)}`;
+                }
+            }, 100); // Alle 100ms aktualisieren
         }
+
+        countUp('clip-count', clipTarget);
+        countUp('user-count', userTarget);
     });
 
-    // Schließen des Dropdowns, wenn irgendwo außerhalb geklickt wird
-    window.addEventListener('click', function (event) {
-        if (!event.target.matches('.dropbtn')) {
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const rightInfoContainer = document.querySelector('.info-container-right'); // Rechter Container
+        const dropBtn = document.getElementById('category-btn');
+
+        // Funktion zum Setzen des z-index auf -1
+        function disableInteractions() {
+            rightInfoContainer.style.zIndex = '-1';  // z-index auf -1 setzen
+        }
+
+        // Funktion zum Zurücksetzen des z-index auf 1
+        function enableInteractions() {
+            rightInfoContainer.style.zIndex = '1';  // z-index auf 1 zurücksetzen
+        }
+
+        // Ereignis für das Öffnen des Dropdown-Menüs
+        dropBtn.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show'); // Dropdown sichtbar machen
             if (dropdownMenu.classList.contains('show')) {
-                dropdownMenu.classList.remove('show');
-                enableInteractions(); // z-index wiederherstellen, wenn Dropdown geschlossen wird
+                disableInteractions(); // z-index auf -1 setzen
+            } else {
+                enableInteractions(); // z-index wieder auf 1 setzen
             }
-        }
+        });
+
+        // Schließen des Dropdowns, wenn irgendwo außerhalb geklickt wird
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show');
+                    enableInteractions(); // z-index wiederherstellen, wenn Dropdown geschlossen wird
+                }
+            }
+        });
     });
-});
-//voting
-let selectedClips = {};  // Global to hold selected clips
-let currentCategoryIndex = 0;  // Aktuelle Kategorie
+    //voting
+    let selectedClips = {};  // Global to hold selected clips
+    let currentCategoryIndex = 0;  // Aktuelle Kategorie
 
-// Kategorien mit 7 Clips pro Kategorie (als Beispiel)
-const categories = [
-    {
-        name: 'Funny Moment',
-        clips: [
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-            {
-                clipId: 'GiftedAnnoyingArmadill3oLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTim3e-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },{
-                clipId: 'GiftedAnnoyingArmad3illoLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBis3onPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-        ]
-    },
-    {
-        name: 'Best Rage Moment',
-        clips: [
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-            {
-                clipId: 'GiftedAnn3oyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTi3me-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },{
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8a3VgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTi4me-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-        ]
-    },
-    {
-        name: 'WTF Passiert Hier?!',
-        clips: [
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8a4VgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76l4VL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },{
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S746lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonP4artyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-        ]
-    },
-    {
-        name: 'Bester Lost Moment',
-        clips: [
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVg4OxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTi2me-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },{
-                clipId: 'GiftedAnnoyingArmadil2loLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-2BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-        ]
-    },
-    {
-        name: 'Bester Jumpscare',
-        clips: [
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-            {
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },{
-                clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
-                clipTitle: '3 Minuten alive test te st te st te st',
-                streamerName: 'FrittiertBoy',
-                profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
-            },
-            {
-                clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
-                clipTitle: 'MCVIBE',
-                streamerName: 'S4MARON',
-                profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
-            },
-        ]
-    }
-];
+    // Kategorien mit 7 Clips pro Kategorie (als Beispiel)
+    const categories = [
+        {
+            name: 'Funny Moment',
+            clips: [
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+                {
+                    clipId: 'GiftedAnnoyingArmadill3oLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTim3e-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },{
+                    clipId: 'GiftedAnnoyingArmad3illoLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBis3onPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+            ]
+        },
+        {
+            name: 'Best Rage Moment',
+            clips: [
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+                {
+                    clipId: 'GiftedAnn3oyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTi3me-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },{
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8a3VgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTi4me-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+            ]
+        },
+        {
+            name: 'WTF Passiert Hier?!',
+            clips: [
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8a4VgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76l4VL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },{
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S746lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonP4artyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+            ]
+        },
+        {
+            name: 'Bester Lost Moment',
+            clips: [
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVg4OxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTi2me-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },{
+                    clipId: 'GiftedAnnoyingArmadil2loLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-2BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+            ]
+        },
+        {
+            name: 'Bester Jumpscare',
+            clips: [
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+                {
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },{
+                    clipId: 'GiftedAnnoyingArmadilloLitFam-S76lVL8aVgOxYWdQ',
+                    clipTitle: '3 Minuten alive test te st te st te st',
+                    streamerName: 'FrittiertBoy',
+                    profileImageUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/9079c28c-923a-41f4-a274-b54278879bff-profile_image-70x70.png'
+                },
+                {
+                    clipId: 'BetterJazzyBisonPartyTime-BLZncG8A8T_4cs9I',
+                    clipTitle: 'MCVIBE',
+                    streamerName: 'S4MARON',
+                    profileImageUrl: 'https://cdn.7tv.app/user/01FXQR7WZ8000C24JJ4Q8RGZRZ/profile-picture/01J9M9YYJR000044GNBVMYBCJE/2x.webp'
+                },
+            ]
+        }
+    ];
 
 
-// Initiale Kategorie laden
-document.addEventListener('DOMContentLoaded', () => {
-    loadCategory(currentCategoryIndex);
-});
+    // Initiale Kategorie laden
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCategory(currentCategoryIndex);
+    });
 
-function loadCategory(index) {
-    const category = categories[index];
-    const clipsContainer = document.getElementById('clips-container');
-    const votingCategoryTitle = document.getElementById('voting-category-title');
+    document.addEventListener("DOMContentLoaded", function () {
+        loadCategory(0); // Initiale Kategorie laden
+    });
 
-    // Titel der Kategorie ändern
-    votingCategoryTitle.innerHTML = `<span class="category-label">Kategorie:</span> <span id="category-name">${category.name}</span>`;
+    function loadCategory(index) {
+        const category = categories[index];
+        const clipsContainer = document.getElementById("clips-container");
+        const votingCategoryTitle = document.getElementById("voting-category-title");
+        const selectedClipContainer = document.getElementById("selected-clip-container");
 
-    // Container leeren und neue Clips einfügen
-    clipsContainer.innerHTML = '';
+        // Titel der Kategorie ändern
+        votingCategoryTitle.innerHTML = `<span class="category-label">Kategorie:</span> <span id="category-name">${category.name}</span>`;
 
-    category.clips.forEach((clip) => {
-        const clipItem = document.createElement('div');
-        clipItem.classList.add('clip-item');
-        clipItem.innerHTML = `
+        // Container leeren und neue Clips einfügen
+        clipsContainer.innerHTML = "";
+
+        // Selected Clip Container ausblenden und leeren
+        if (selectedClipContainer) {
+            selectedClipContainer.style.display = "none";
+            selectedClipContainer.innerHTML = ""; // Inhalt entfernen
+        } else {
+            console.error("Fehler: Der 'selected-clip-container' wurde nicht gefunden.");
+            return; // Abbrechen, wenn das Element nicht existiert
+        }
+
+        category.clips.forEach((clip) => {
+            const clipItem = document.createElement("div");
+            clipItem.classList.add("clip-item");
+            clipItem.setAttribute("role", "button");
+            clipItem.setAttribute("tabindex", "0");
+            clipItem.style.cursor = "pointer";
+
+            clipItem.innerHTML = `
             <div class="clip-info">
                 <img src="${clip.profileImageUrl}" alt="${clip.streamerName} Profile" class="streamer-profile">
                 <div class="clip-details">
-                    <h3 class="clip-title" title="${clip.clipTitle}">${clip.clipTitle.length > 20 ? clip.clipTitle.substring(0, 17) + '...' : clip.clipTitle}</h3>
-                    <p class="streamer-name">${clip.streamerName}</p>
+                    <h3 class="clip-title" title="${clip.streamerName}">${clip.streamerName.length > 20 ? clip.streamerName.substring(0, 17) + '...' : clip.streamerName}</h3>
+                    <p class="streamer-name">${clip.clipTitle}</p>
                 </div>
-            </div>
-            <div class="iframe-container">
-                <iframe src="https://clips.twitch.tv/embed?clip=${clip.clipId}&parent=smallstreamawards.de" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="clip-selection">
                 <h2 class="selection-text">Klicke, um diesen Clip zu wählen!</h2>
@@ -1984,125 +2056,203 @@ function loadCategory(index) {
                 </div>
             </div>
         `;
-        clipsContainer.appendChild(clipItem);
+
+            // Event Listener für Klick auf den Clip hinzufügen
+            clipItem.addEventListener("click", () => handleClipClick(clip, clipItem));
+            clipsContainer.appendChild(clipItem);
+        });
+
+        // "Weiter" Button deaktivieren, bis ein Clip gewählt wurde
+        document.getElementById('next-category-btn').disabled = true;
+
+        // Präzises Scrollen zum Anfang des Clips-Containers
+        const yOffset = -250; // Optionaler Offset, falls zu weit oder zu kurz gescrollt wird
+        const yPosition = clipsContainer.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: yPosition, behavior: "smooth" });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectedClipContainer = document.getElementById("selected-clip-container");
+
+        if (!selectedClipContainer) {
+            console.error("Fehler: Der 'selected-clip-container' wurde nicht gefunden.");
+            return; // Abbrechen, wenn das Element nicht existiert
+        }
+
+        loadCategory(0); // Initiale Kategorie laden
     });
 
-    // "Weiter" Button deaktivieren, bis ein Clip gewählt wurde
-    document.getElementById('next-category-btn').disabled = true;
-}
+    function handleClipClick(clip, clipElement) {
+        const selectedClipContainer = document.getElementById("selected-clip-container");
 
+        if (!selectedClipContainer) {
+            console.error("Fehler: Der 'selected-clip-container' wurde nicht gefunden.");
+            return;
+        }
 
+        const allClipItems = document.querySelectorAll(".clip-item");
 
-
-
-function selectClip(clipId, element) {
-    // Überprüfen, ob derselbe Clip erneut gewählt wurde
-    if (selectedClips[currentCategoryIndex] === clipId) {
-        // Auswahl zurücksetzen, falls erneut geklickt
-        delete selectedClips[currentCategoryIndex];
-        element.classList.remove('selected');
-        
-        // "Weiter" Button deaktivieren, da keine Auswahl getroffen ist
-        document.getElementById('next-category-btn').disabled = true;
-
-        // Entferne den Graueffekt von allen Clips
-        const allClipItems = document.querySelectorAll('.clip-item');
-        allClipItems.forEach(item => {
-            item.classList.remove('disabled');
-        });
-    } else {
-        // Neue Auswahl setzen
-        selectedClips[currentCategoryIndex] = clipId;
-
-        // Setze den "Weiter" Button aktiv
-        document.getElementById('next-category-btn').disabled = false;
-
-        // Alle "select-circle"-Elemente zurücksetzen und alle Clip-Container grau schalten
-        const allClipItems = document.querySelectorAll('.clip-item');
-        allClipItems.forEach(item => {
-            item.classList.add('disabled'); // Graue alle Clips aus
-            const circle = item.querySelector('.select-circle');
-            if (circle) circle.classList.remove('selected'); // Entferne Auswahl aus allen Kreisen
+        // Bisher ausgewählten Clip wieder sichtbar machen und alle anderen deaktivieren
+        allClipItems.forEach((item) => {
+            if (item !== clipElement) {
+                item.classList.add("disabled"); // Deaktiviert die anderen Clips
+            } else {
+                item.classList.remove("disabled"); // Aktiviert den ausgewählten Clip
+            }
         });
 
-        // Gewähltes Element hervorheben und aktivieren
-        element.classList.add('selected');
-        element.closest('.clip-item').classList.remove('disabled'); // Markierten Clip von Grau-Effekt ausnehmen
+        // Clip im großen Container anzeigen
+        selectedClipContainer.innerHTML = `
+        <div class="clip-info">
+            <img src="${clip.profileImageUrl}" alt="${clip.streamerName} Profile" class="streamer-profile">
+            <div class="clip-details">
+                <h3 class="clip-title" title="${clip.streamerName}">${clip.streamerName.length > 20 ? clip.streamerName.substring(0, 17) + '...' : clip.streamerName}</h3>
+                    <p class="streamer-name">${clip.clipTitle}</p>
+            </div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://clips.twitch.tv/embed?clip=${clip.clipId}&parent=smallstreamawards.de" frameborder="0" allowfullscreen></iframe>
+        </div>
+    `;
+        selectedClipContainer.style.display = "block";
+        selectedClipContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center" // Scrollt, sodass der Container in der Mitte des Bildschirms ist
+        });
     }
-}
 
+    function selectClip(clipId, element) {
+        // Überprüfen, ob derselbe Clip erneut gewählt wurde
+        if (selectedClips[currentCategoryIndex] === clipId) {
+            // Auswahl zurücksetzen, falls erneut geklickt
+            delete selectedClips[currentCategoryIndex];
+            element.classList.remove('selected');
 
-
-
-
-function nextCategory() {
-    if (currentCategoryIndex < categories.length - 1) {
-        currentCategoryIndex++;
-        loadCategory(currentCategoryIndex);
-
-        // "Zurück" Button aktivieren
-        document.getElementById('prev-category-btn').style.display = 'inline';
-
-        // Den "Weiter"-Button deaktivieren, bis ein Clip für die neue Kategorie gewählt wurde
-        document.getElementById('next-category-btn').disabled = true;
-    } else {
-        showSummary();
-    }
-}
-
-function prevCategory() {
-    if (currentCategoryIndex > 0) {
-        currentCategoryIndex--;
-        loadCategory(currentCategoryIndex);
-
-        // Den "Weiter"-Button wieder aktivieren, falls ein Clip in der Kategorie ausgewählt wurde
-        if (selectedClips[currentCategoryIndex]) {
-            document.getElementById('next-category-btn').disabled = false;
-        } else {
+            // "Weiter" Button deaktivieren, da keine Auswahl getroffen ist
             document.getElementById('next-category-btn').disabled = true;
+
+            // Entferne den Graueffekt von allen Clips
+            const allClipItems = document.querySelectorAll('.clip-item');
+            allClipItems.forEach(item => {
+                item.classList.remove('disabled'); // Setzt alle Clips auf aktiv
+            });
+        } else {
+            // Neue Auswahl setzen
+            selectedClips[currentCategoryIndex] = clipId;
+
+            // Setze den "Weiter" Button aktiv
+            document.getElementById('next-category-btn').disabled = false;
+
+            // Alle "select-circle"-Elemente zurücksetzen und alle Clip-Container grau schalten
+            const allClipItems = document.querySelectorAll('.clip-item');
+            allClipItems.forEach(item => {
+                item.classList.add('disabled'); // Deaktiviert alle Clips
+                const circle = item.querySelector('.select-circle');
+                if (circle) circle.classList.remove('selected'); // Entfernt Auswahl aus allen Kreisen
+            });
+
+            // Gewähltes Element hervorheben und aktivieren
+            element.classList.add('selected');
+            element.closest('.clip-item').classList.remove('disabled'); // Markierten Clip von Grau-Effekt ausnehmen
         }
     }
 
-    if (currentCategoryIndex === 0) {
-        document.getElementById('prev-category-btn').style.display = 'none';
+
+
+
+    function nextCategory() {
+        if (currentCategoryIndex < categories.length - 1) {
+            currentCategoryIndex++;
+            loadCategory(currentCategoryIndex);
+
+            // "Zurück" Button aktivieren
+            document.getElementById('prev-category-btn').style.display = 'inline';
+
+            // Den "Weiter"-Button deaktivieren, bis ein Clip für die neue Kategorie gewählt wurde
+            document.getElementById('next-category-btn').disabled = true;
+        } else {
+            showSummary();
+        }
     }
-}
 
-function showSummary() {
-    const votingContainer = document.getElementById('voting-container');
-    const votingSummary = document.getElementById('voting-summary');
-    const chosenClipsList = document.getElementById('chosen-clips-list');
+    function prevCategory() {
+        if (currentCategoryIndex > 0) {
+            currentCategoryIndex--;
+            loadCategory(currentCategoryIndex);
 
-    // Clip-Auswahl in der Zusammenfassung anzeigen
-    chosenClipsList.innerHTML = '';
-    Object.keys(selectedClips).forEach(categoryIndex => {
-        const category = categories[categoryIndex];
-        const chosenClipId = selectedClips[categoryIndex];
-        const chosenClip = category.clips.find(clip => clip.clipId === chosenClipId);
+            // Den "Weiter"-Button wieder aktivieren, falls ein Clip in der Kategorie ausgewählt wurde
+            if (selectedClips[currentCategoryIndex]) {
+                document.getElementById('next-category-btn').disabled = false;
+            } else {
+                document.getElementById('next-category-btn').disabled = true;
+            }
+        }
 
-        const listItem = document.createElement('li');
-        listItem.textContent = `Kategorie ${category.name}: ${chosenClip.clipTitle} von ${chosenClip.streamerName}`;
-        chosenClipsList.appendChild(listItem);
-    });
+        if (currentCategoryIndex === 0) {
+            document.getElementById('prev-category-btn').style.display = 'none';
+        }
+    }
 
-    // Zeige Zusammenfassung und verstecke die Clip-Auswahl
-    votingContainer.style.display = 'none';
-    votingSummary.style.display = 'block';
-}
+    function showSummary() {
+        const votingContainer = document.getElementById('voting-container');
+        const votingSummary = document.getElementById('voting-summary');
+        const chosenClipsList = document.getElementById('chosen-clips-list');
 
-function submitVote() {
-    alert('Danke fürs Voten!');
-    
-    const thankYouMessage = document.getElementById('thank-you-message');
-    const votingSummary = document.getElementById('voting-summary');
-    votingSummary.style.display = 'none';
-    thankYouMessage.style.display = 'block';
-}
+        // Clip-Auswahl in der Zusammenfassung anzeigen
+        chosenClipsList.innerHTML = '';
+        Object.keys(selectedClips).forEach(categoryIndex => {
+            const category = categories[categoryIndex];
+            const chosenClipId = selectedClips[categoryIndex];
+            const chosenClip = category.clips.find(clip => clip.clipId === chosenClipId);
 
-function startVoting() {
-    document.getElementById('countdown-section').style.display = 'none';
-    document.getElementById('voting-container').style.display = 'block';
-}
+            // Erstelle einen Container für jede Kategoriezeile
+            const categoryContainer = document.createElement('div');
+            categoryContainer.classList.add('category-container');
+
+            categoryContainer.innerHTML = `
+    <h3 class="category-title">
+        <span class="category-label">KATEGORIE:</span><br>
+        ${category.name}
+    </h3>
+    <div class="clip-info">
+        <div class="clip-details">
+            <h4>${chosenClip.clipTitle}</h4>
+        </div>
+    </div>
+`;
+
+
+            // Debug: In die Konsole loggen
+            console.log("Appending category container:", categoryContainer);
+
+            // Füge den Container zur Zusammenfassungsliste hinzu
+            chosenClipsList.appendChild(categoryContainer);
+        });
+
+        // Zeige Zusammenfassung und verstecke die Clip-Auswahl
+        votingContainer.style.display = 'none';
+        votingSummary.style.display = 'block';
+        votingSummary.scrollIntoView({ behavior: 'smooth' });
+
+        // Scroll mit Offset (nach oben) einstellen
+        window.scrollBy(0, -500);
+    }
+
+
+    function submitVote() {
+        alert('Danke fürs Voten!');
+
+        const thankYouMessage = document.getElementById('thank-you-message');
+        const votingSummary = document.getElementById('voting-summary');
+        votingSummary.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+    }
+
+    function startVoting() {
+        document.getElementById('countdown-section').style.display = 'none';
+        document.getElementById('voting-container').style.display = 'block';
+    }
 
 
 
