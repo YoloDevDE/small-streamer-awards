@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new TwitchStrategy({
-    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'https://aintnoway.de/test', scope: 'user:read:email'
+    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'https://aintnoway.de/auth/twitch/callback', scope: 'user:read:email'
 }, async function (accessToken, refreshToken, profile, done) {
     try {
         const helixResponse = await axios.get('https://api.twitch.tv/helix/users', {
@@ -90,7 +90,7 @@ app.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirec
             req.session.save(() => res.redirect('/'));
         });
     } else {
-        req.session.save(() => res.redirect('/'));
+        req.session.save(() => res.redirect('/test'));
     }
 });
 
