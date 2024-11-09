@@ -87,7 +87,7 @@ app.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirec
     if (req.authInfo && req.authInfo.isNewUser) {
         req.session.regenerate((err) => {
             if (err) return res.status(500).json({success: false, message: 'Session regeneration failed'});
-            req.session.save(() => res.redirect('/'));
+            req.session.save(() => res.redirect('/test'));
         });
     } else {
         req.session.save(() => res.redirect('/test'));
