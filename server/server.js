@@ -141,15 +141,15 @@ app.post('/api/submit-clip', (req, res) => {
 
 app.post('/api/vote-clip', (req, res) => {
     if (!req.isAuthenticated()) {
-        return res.status(401).json({ success: false, message: 'User not authenticated' });
+        return res.status(401).json({success: false, message: 'User not authenticated'});
     }
 
     const userId = req.user.id;
-    const { clip_submission_id, prize_category_id } = req.body;
+    const {clip_submission_id, prize_category_id} = req.body;
 
     // Check if required fields are present
     if (!clip_submission_id || !prize_category_id) {
-        return res.status(400).json({ success: false, message: 'clip_submission_id and prize_category_id are required' });
+        return res.status(400).json({success: false, message: 'clip_submission_id and prize_category_id are required'});
     }
 
     // Check if the user has already voted for this prize category
@@ -160,12 +160,12 @@ app.post('/api/vote-clip', (req, res) => {
 
     connection.query(checkVoteQuery, [userId, prize_category_id], (err, results) => {
         if (err) {
-            return res.status(500).json({ success: false, message: 'Database query failed', error: err });
+            return res.status(500).json({success: false, message: 'Database query failed', error: err});
         }
 
         if (results.length > 0) {
             // User has already voted for this prize category
-            return res.status(400).json({ success: false, message: 'User has already voted for this prize category' });
+            return res.status(400).json({success: false, message: 'User has already voted for this prize category'});
         }
 
         // If no vote exists, insert the new vote
@@ -176,10 +176,10 @@ app.post('/api/vote-clip', (req, res) => {
 
         connection.query(insertVoteQuery, [userId, prize_category_id, clip_submission_id], (err, result) => {
             if (err) {
-                return res.status(500).json({ success: false, message: 'Failed to submit vote', error: err });
+                return res.status(500).json({success: false, message: 'Failed to submit vote', error: err});
             }
 
-            return res.json({ success: true, message: 'Vote submitted successfully' });
+            return res.json({success: true, message: 'Vote submitted successfully'});
         });
     });
 });
