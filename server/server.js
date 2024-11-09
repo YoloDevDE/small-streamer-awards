@@ -36,7 +36,7 @@ connection.connect(err => {
 
 // Session management
 app.use(session({
-    secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true
+    secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true, cookie: {maxAge: 24 * 60 * 60 * 1000} // 1 day
 }));
 
 app.use(passport.initialize());
@@ -44,7 +44,7 @@ app.use(passport.session());
 
 passport.use(new TwitchStrategy({
     clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'https://aintnoway.de/auth/twitch/callback', scope: 'user:read:email'
-}, async function (accessToken, refreshToken, profile, done) {
+}, async (accessToken, refreshToken, profile, done) => {
     try {
         const helixResponse = await axios.get('https://api.twitch.tv/helix/users', {
             headers: {
@@ -82,21 +82,32 @@ passport.use(new TwitchStrategy({
 // Routes for authentication and error handling, now using env variables
 app.get('/auth/twitch', passport.authenticate('twitch'));
 
-
 app.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirect: '/fail'}), (req, res) => {
+    console.log('Callback reached');
     if (req.authInfo && req.authInfo.isNewUser) {
         req.session.regenerate((err) => {
             if (err) return res.status(500).json({success: false, message: 'Session regeneration failed'});
-            req.session.save(() => res.redirect('/test'));
+            req.session.save(() => {
+                console.log('New user session saved');
+                res.redirect('/test');
+            });
         });
     } else {
-        req.session.save(() => res.redirect('/test'));
+        req.session.save(() => {
+            console.log('Existing user session saved');
+            res.redirect('/test');
+        });
     }
 });
 
 // Serialize and deserialize user
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => {
+    console.log('Serializing user:', user);
+    done(null, user.id);
+});
+
 passport.deserializeUser((id, done) => {
+    console.log('Deserializing user with ID:', id);
     connection.query('SELECT * FROM twitch_users WHERE id = ?', [id], (err, results) => {
         if (err) return done(err);
         done(null, results.length > 0 ? results[0] : false);
@@ -137,7 +148,6 @@ app.post('/api/submit-clip', (req, res) => {
         res.json({success: true, message: 'Clip submitted successfully', result});
     });
 });
-
 
 app.post('/api/vote-clip', (req, res) => {
     if (!req.isAuthenticated()) {
