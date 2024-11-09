@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new TwitchStrategy({
-    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'https://aintnoway.de/auth/twitch/callback', scope: 'user:read:email'
+    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'http://localhost:3000/auth/twitch/callback', scope: 'user:read:email'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const helixResponse = await axios.get('https://api.twitch.tv/helix/users', {
@@ -208,3 +208,60 @@ app.get('/test', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+app.get('/api/categories-clips', (req, res) => {
+    const query = `
+        SELECT pc.id AS category_id, pc.name AS category_name, cs.clip_url, cs.id AS clip_id
+        FROM prize_category pc
+        JOIN clip_submissions cs ON pc.id = cs.prize_category_id
+        ORDER BY pc.id, cs.id;  -- Sort by category and clip ID
+    `;
+
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Error fetching categories and clips:', err);
+            return res.status(500).json({success: false, message: 'Error fetching categories and clips'});
+        }
+
+        // Regex zum Filtern und Extrahieren des Streamernamens
+        const clipUrlPattern = /twitch\.tv\/([^/]+)\/clip\//;
+
+        // Funktion zum Extrahieren des Streamer-Namens aus der URL
+        const extractStreamerName = (url) => {
+            const match = url.match(clipUrlPattern);
+            return match ? match[1] : null;
+        };
+
+        // Struktur zur Speicherung von Kategorien und Vermeidung doppelter Clips
+        const categories = [];
+        const seenClips = new Set(); // Set zur Überprüfung von Duplikaten
+        let currentCategory = null;
+
+        results.forEach(row => {
+            // Überprüfe, ob die URL zum Muster passt und keine Duplikate vorliegen
+            if (!clipUrlPattern.test(row.clip_url) || seenClips.has(row.clip_url)) return;
+
+            // Markiere die URL als gesehen, um Duplikate zu vermeiden
+            seenClips.add(row.clip_url);
+
+            // Wenn eine neue Kategorie beginnt, erstelle eine neue Kategorie im Array
+            if (!currentCategory || currentCategory.id !== row.category_id) {
+                currentCategory = {
+                    id: row.category_id, name: row.category_name, clips: []
+                };
+                categories.push(currentCategory);
+            }
+
+            // Füge den Clip zur aktuellen Kategorie hinzu, inkl. Streamername aus der URL
+            currentCategory.clips.push({
+                clipId: row.clip_id, clipTitle: row.clip_url,  // oder verwende einen anderen Titel, falls vorhanden
+                streamerName: extractStreamerName(row.clip_url)  // Streamername aus der URL extrahieren
+            });
+        });
+
+        res.json({success: true, categories});
+    });
+});
+
+
