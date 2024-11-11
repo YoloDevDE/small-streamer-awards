@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new TwitchStrategy({
-    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: 'http://localhost:3000/auth/twitch/callback', scope: 'user:read:email'
+    clientID: process.env.TWITCH_CLIENT_ID, clientSecret: process.env.TWITCH_CLIENT_SECRET, callbackURL: process.env.AUTH_CALLBACK_URL, scope: 'user:read:email'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         // Fetch user details from the Twitch Helix API
