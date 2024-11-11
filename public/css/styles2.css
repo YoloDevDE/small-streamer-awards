@@ -327,11 +327,6 @@
     text-align: center;
 }
 
-.clip-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .streamer-profile {
     width: 50px;
@@ -366,27 +361,34 @@
 
 .clip-item {
     transition: transform 0.3s ease;
+    cursor: pointer; /* Changes mouse pointer on hover */
 }
 
 
 .clip-info {
     display: flex;
+    flex-direction: row;
     padding: 5px;
-
+    align-items: center;
+    justify-content: start;
     border-radius: 0.7vh 0.7vh 0 0;
 
 }
 
 .streamer-profile {
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    width: 60px;
+    height: 60px;
     margin-right: 10px;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
 }
 
 .clip-details {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .clip-title {
@@ -448,9 +450,7 @@
 
 .clip-item {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
     width: 450px; /* Breite des Clip-Containers */
     padding: 10px;
     animation: pulse-gold 5s infinite ease-in-out;
@@ -460,6 +460,7 @@
     background-color: rgba(95, 55, 0, 0.384);
     box-shadow: 0 0 15px #d4992c4f; /* Glüheffekt */
 }
+
 
 .clip-item.disabled {
 
@@ -516,6 +517,7 @@
 
 .clip-selection {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     margin-top: 10px;
 }
@@ -602,9 +604,33 @@
     cursor: not-allowed;
     filter: grayscale(100%);
 }
+.category-container {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 1vh;
+    background-size: cover; /* Ensures background covers entire container */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat;
+    box-shadow: 0 0 15px #d4992c4f;
+    text-shadow: 0 0 10px #f1c95b52, 0 0 20px #f1c95b65, 0 0 30px #f1c95bb9;
+}
+
+/* Optional overlay for readability */
+.category-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    border-radius: inherit; /* Matches container's rounded corners */
+}
 
 /* voting phase 2 */
-
 
 ::-webkit-scrollbar {
     width: 12px; /* Breite der Scrollbar */
