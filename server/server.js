@@ -11,6 +11,17 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 const projectRoot = path.join(__dirname, '..');
+// In-memory array to store recent logs
+const logBuffer = [];
+
+// Override console.log to store logs in logBuffer
+console.log = (function (originalLog) {
+    return function (...args) {
+        logBuffer.push(args.join(" "));
+        if (logBuffer.length > 100) logBuffer.shift(); // Keep the last 100 logs only
+        originalLog.apply(console, args);
+    };
+})(console.log);
 
 // Middleware to parse incoming request bodies
 app.use(bodyParser.json());
@@ -349,4 +360,21 @@ app.get('/api/has-voted', async (req, res) => {
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+});
+
+// Endpoint to get recent logs
+app.get('/api/server-logs', (req, res) => {
+    // Check if the user is authenticated (optional for added security)
+    // if (!req.isAuthenticated()) {
+    //     return res.status(401).json({
+    //         success: false,
+    //         message: 'User not authenticated'
+    //     });
+    // }
+
+    // Return the logs as a response
+    res.json({
+        success: true,
+        logs: logBuffer
+    });
 });
