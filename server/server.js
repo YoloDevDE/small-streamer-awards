@@ -375,19 +375,19 @@ app.listen( port, () => {
     console.log( `Server is running on http://localhost:${port}` );
 } );
 
-// Endpoint to get recent logs
-app.get( '/api/server-logs', (req, res) => {
-    // Check if the user is authenticated (optional for added security)
-    // if (!req.isAuthenticated()) {
-    //     return res.status(401).json({
-    //         success: false,
-    //         message: 'User not authenticated'
-    //     });
-    // }
-
-    // Return the logs as a response
-    res.json( {
-        success: true,
-        logs: logBuffer
-    } );
-} );
+// // Endpoint to get recent logs
+// app.get( '/api/server-logs', (req, res) => {
+//     // Check if the user is authenticated (optional for added security)
+//     // if (!req.isAuthenticated()) {
+//     //     return res.status(401).json({
+//     //         success: false,
+//     //         message: 'User not authenticated'
+//     //     });
+//     // }
+//
+//     // Return the logs as a response
+//     res.json( {
+//         success: true,
+//         logs: logBuffer
+//     } );
+// } );
