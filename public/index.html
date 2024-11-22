@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link href="images/ssa2.png" rel="icon" type="image/png">
+	<link rel="icon" href="images/ssa2.png" type="image/png">
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <!-- /.website title -->
     <title>Small Stream Awards</title>
@@ -80,12 +80,10 @@
             text-decoration: none;
             cursor: pointer;
         }
-
-        .blurred {
-            filter: blur(2px);
-            pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
-        }
-
+		.blurred {
+    filter: blur(2px);
+    pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
+}
         /* Form styling */
         .form-group {
             margin-bottom: 15px;
@@ -162,7 +160,7 @@
 
         /* Style for the Login link to look like a button */
         .login-btn {
-            padding: 0.5em;
+			padding: 0.5em;
             color: rgba(167, 122, 0, 0.596);
             margin-top: 3em;
             margin-bottom: 0em;
@@ -177,11 +175,13 @@
             backdrop-filter: blur(1vh);
             background-color: rgba(53, 31, 0, 0.288);
         }
+        
 
         .user-info-container {
-            padding: 0.5em;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 5vh;
+			padding: 0.5em;
+			margin-left: auto;
+    		margin-right: auto;
             width: fit-content;
             color: #ffffff85;
             border-radius: 10px; /* Rounded corners */
@@ -196,7 +196,7 @@
         }
 
         .login-btn:hover {
-            transform: scale(1.05); /* Leichter Hover-Effekt */
+			transform: scale(1.05); /* Leichter Hover-Effekt */
             background-color: #a829972a; /* Slightly darker yellow for hover effect */
             cursor: pointer;
         }
@@ -269,7 +269,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#feature">Über uns</a></li>
                     <li><a href="#B2">Kategorien</a></li>
-                    <li><a href="#Phase">Einsenden</a></li>
+                    <li><a href="#Phase">Voting</a></li>
 
                     <!-- <li>
                         <a href="https://id.twitch.tv/oauth2/authorize?client_id=zzds8ws0st10vxfa3568snakvm31m1&redirect_uri=https://smallstreamawards.de&response_type=code&scope=user:read:email"
@@ -313,7 +313,7 @@
 
             <div class="Landing-Con">
                 <div class="Landing-content">
-                    </p>
+                
 
                     <h1 class="wow fadeInLeft">
                         DIE SMALL STREAM AWARDS <span class="number" id="confetti-trigger">2024</span>
@@ -335,10 +335,10 @@
             <!-- /.header button -->
             <div class="head-btn wow fadeInLeft">
                 <a class="btn-primary app-store" href="#Phase">
-                    <i class="fa solid fa-fire"></i></i> <span> Nominieren</span>
+                    <i class="fa solid fa-fire"></i> <span> Voting</span>
                 </a>
                 <a class="btn-primary play-market" href="#B2">
-                    <i class="fa solid fa-clipboard"></i></i> <span> Kategorien</span>
+                    <i class="fa solid fa-clipboard"></i> <span> Kategorien</span>
                 </a>
             </div>
 
@@ -348,7 +348,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- <div class="phase nope"> für beendete Phasen -->
 <section id="Phase"></section>
@@ -365,7 +364,7 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase active">
+            <div class="phase nope">
                 <h4>Clip Einsendung</h4>
                 <!-- <i class="icon fas fa-tasks"></i> -->
                 <span>Phase 2
@@ -374,17 +373,17 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase">
-                <h4>Voting</h4>
-                <!-- <i class="icon fas fa-chart-line"></i> -->
+            <div class="phase nope">
+                <h4>Auswertung</h4>
+                <!-- <i class="icon fas fa-cogs"></i> -->
                 <span>Phase 3</span>
             </div>
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase">
-                <h4>Auswertung</h4>
-                <!-- <i class="icon fas fa-cogs"></i> -->
+            <div class="phase active">
+                <h4>Voting</h4>
+                <!-- <i class="icon fas fa-chart-line"></i> -->
                 <span>Phase 4</span>
             </div>
             <div class="arrow"></div>
@@ -399,14 +398,16 @@
     </div>
 </div>
 
-<div class="phase-info-container">
+<div class="phase-info-container" id="phase-info-container">
     <div class="phase-info">
         <section id="B2"></section>
-        <div class="countdown">
+        <div class="animated-image-container">
+            <!-- Add more images as needed -->
+        </div>
+        <div class="countdown" id="countdown-section">
             <!-- Login button -->
             <a class="login-btn" href="/auth/twitch" id="openLoginPopup" style="display:none;">
-                <img alt="Twitch Icon" class="oauth-icon" height="16" src="images/Twitch.svg" width="16">
-                Login
+                <img alt="Twitch Icon" class="oauth-icon" height="16" src="images/Twitch.svg" width="16">Login
             </a>
 
             <!-- User info (hidden by default) -->
@@ -416,72 +417,153 @@
                     <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i>
                 </a>
             </div>
-            <p>Sende jetzt Clips ein!</p>
-            <h2>Ende der Clip Einsendungen</h2>
+            <h1>Vote jetzt für die besten Clips!</h1>
+            <h2>Voting Schluss in:</h2>
+
             <div id="timer">
                 <span id="days"></span> Tage
                 <span id="hours"></span> Stunden
                 <span id="minutes"></span> Minuten
                 <span id="seconds"></span> Sekunden
             </div>
-        </div>
 
-        <div class="submission-container">
-            <div class="input-container">
-                <!-- Beispiel für den Clip-Link -->
-                <input id="clip-url" placeholder="https://clips.twitch.tv/..." type="text"/>
-
-                <!-- Kategorie wählen Button -->
-                <div class="dropdown">
-                    <button class="dropbtn" id="category-btn">Kategorie wählen</button>
-                    <div class="dropdown-content" id="dropdown-menu">
-                        <a data-category="Funny Moment" href="#">Funny Moment</a>
-                        <a data-category="Best Rage Moment" href="#">Best Rage Moment</a>
-                        <a data-category="WTF Passiert Hier?!" href="#">WTF Passiert Hier?!</a>
-                        <a data-category="Bester Lost Moment" href="#">Bester Lost Moment</a>
-                        <a data-category="Bester Jumpscare" href="#">Bester Jumpscare</a>
-                    </div>
-                </div>
-
-                <!-- Absenden Button -->
-                <button class="disabled" id="submit-btn">Absenden</button>
+            <!-- Button to start voting -->
+             <div class= "startvot">
+            <button class="start-voting-btn" id="start-voting-btn">Zum Voting</button>
             </div>
         </div>
+
+        <!-- Voting Content will be inserted dynamically after clicking the "Zum Voting" button -->
+        <div id="voting-container" style="display:none;">
+            <div class="vct" id="voting-category-title">
+                <span class="category-label">KATEGORIE:</span> <span id="category-name">Funny Moment</span>
+            </div>
+            <section class="flex-container flex-column" id="Clip">
+
+                <div id="selected-clip-container" style="display: none;">
+                    <!-- Der ausgewählte Clip wird hier dynamisch eingefügt -->
+                </div>
+                <div class="navigation-buttons">
+                    <button id="prev-category-btn" onclick="SSA.prevCategory()" style="display:none;">Zurück</button>
+                    <button id="next-category-btn" onclick="SSA.nextCategory()">Weiter</button>
+                </div>
+            </section>
+
+
+            <div id="clips-container"></div>
+        </div>
+
+
+        <!-- After voting all categories -->
+        <div class="voting-summary" id="voting-summary" style="display:none;">
+            <h2>Deine gewählten Clips</h2>
+            <ul class="chosen-clips-list" id="chosen-clips-list"></ul>
+            <button class="submit-vote-btn" id="submit-vote-btn" onclick="SSA.submitVote()">Abstimmung absenden</button>
+        </div>
+
+        <!-- After submitting vote -->
+        <div id="thank-you-message" style="display:none;">
+            <h2>Danke fürs Voten!</h2>
+            <p>Du hast bereits abgestimmt. Du kannst nur einmal abstimmen.</p>
+        </div>
+        
     </div>
 </div>
-<!-- Neuer Container für Clip-Voraussetzungen -->
 <div class="crc">
     <div class="requirements-wrapper">
-        <!-- Left Information Container -->
-        <div class="info-container-left">
-            <h4>Statistiken</h4>
-            <ul>
-                <li><span class="stat-number" id="clip-count">+500</span> eingesendete Clips</li>
-                <li><span class="stat-number" id="user-count">+200</span> registrierte User</li>
-            </ul>
-        </div>
 
-        <!-- Main Clip Requirements Container -->
-        <div class="clip-requirements-container">
-            <h3>Voraussetzungen für das Einreichen von Clips</h3>
-            <ul>
-                <li><i class="fas fa-video"></i> Clips müssen eine Länge von mindestens 4 Sekunden haben.</li>
-                <li><i class="fas fa-calendar-alt"></i> Der Clip sollte nicht älter als 12 Monate sein.</li>
-                <li><i class="fas fa-copyright"></i> Es dürfen keine urheberrechtlich geschützten Inhalte enthalten sein.</li>
-                <li><i class="fas fa-stream"></i> Clips sollten in einer passenden Kategorie eingesendet werden.</li>
-                <li><i class="fas fa-shield-alt"></i> Clips müssen die Twitch-Nutzungsbedingungen und Community-Richtlinien einhalten.</li>
-            </ul>
-        </div>
+        <div class="outer">
+        <div class="card">
+            <div class="ray"></div>
+            <div class="button-container">
+            
 
-        <!-- Right Information Container -->
-        <button class="info-container-right" onclick="window.location.href='https://forms.gle/qSuY4HoH9T49rmC58'">
-            <!-- <img src="images/ad.png" alt="Wir suchen Verstärkung im SmallStreamAwards Team"> -->
-        </button>
+            <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100" height="25%" width="25%">
+            <rect fill="#763AC2" height="8" width="90.62" y="51" x="5.04999" class="buttonSides"></rect>
+            <rect fill="#763AC2" transform="matrix(0.866025 -0.5 0.866025 0.5 1 59)" rx="8" height="57" width="57" class="buttonSides"></rect>
+            <g clip-path="url(#clip0_106_11)">
+                <rect fill="#A661FF" transform="matrix(0.866025 -0.5 0.866025 0.5 1 51)" rx="8" height="57" width="57" class="buttonTop"></rect>
+                <path fill="#763AC2" d="M64.2199 42.5L55.4353 61.4282L31.4353 47.5718L64.2199 42.5Z" class="buttonSides playSides"></path>
+                <g filter="url(#filter0_d_106_11)" class="glowAll">
+                <path fill="white" d="M64.2199 42.5L55.4353 61.4282L31.4353 47.5718L64.2199 42.5Z"></path>
+                </g>
+                <g filter="url(#filter1_f_106_11)" opacity="0.5" class="glowMe">
+                <path fill="white" d="M73.0478 36.9032L58.6665 67.8905L19.3761 45.2062L73.0478 36.9032Z"></path>
+                </g>
+            </g>
+            <path fill="url(#paint0_linear_106_11)" d="M64 43L32 47.8L32 8L64 8L64 43Z" opacity="0.5" class="glowMe"></path>
+            <defs>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="34.9282" width="48.7846" y="34.5" x="23.4353" id="filter0_d_106_11">
+                <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+                <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+                <feComposite operator="out" in2="hardAlpha"></feComposite>
+                <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" type="matrix"></feColorMatrix>
+                <feBlend result="effect1_dropShadow_106_11" in2="BackgroundImageFix" mode="normal"></feBlend>
+                <feBlend result="shape" in2="effect1_dropShadow_106_11" in="SourceGraphic" mode="normal"></feBlend>
+                </filter>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="62.9873" width="85.6716" y="20.9032" x="3.37613" id="filter1_f_106_11">
+                <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+                <feBlend result="shape" in2="BackgroundImageFix" in="SourceGraphic" mode="normal"></feBlend>
+                <feGaussianBlur result="effect1_foregroundBlur_106_11" stdDeviation="8"></feGaussianBlur>
+                </filter>
+                <linearGradient gradientUnits="userSpaceOnUse" y2="8" x2="47" y1="48" x1="47" id="paint0_linear_106_11">
+                <stop stop-color="white"></stop>
+                <stop stop-opacity="0" stop-color="white" offset="1"></stop>
+                </linearGradient>
+                <clipPath id="clip0_106_11">
+                <rect fill="white" transform="matrix(0.866025 -0.5 0.866025 0.5 1 51)" rx="8" height="57" width="57"></rect>
+                </clipPath>
+            </defs>
+            </svg>
+
+            
+            </div>
+
+            
+            <div class="line topl"></div>
+            <div class="line leftl"></div>
+            <div class="line bottoml"></div>
+            <div class="line rightl"></div>
+            <div>Die besten Clips stehen jetzt zum Voting.</div>
+        </div>
+        </div>
+</div>
+    <div class="requirements-wrapper">
+
+                <div class="outer">
+                <div class="dot"></div>
+                <div class="card">
+                    <div class="ray"></div>
+                    <div  id="clip-count" class="text stat-number">+2000</div>
+                    <div>eingesendete Clips</div>
+                    <div  id="user-count" class="text stat-number">+500</div>
+                    <div>registrierte Nutzer</div>
+                    <div class="line topl"></div>
+                    <div class="line leftl"></div>
+                    <div class="line bottoml"></div>
+                    <div class="line rightl"></div>
+                </div>
+                </div>
     </div>
+    <div class="requirements-wrapper">
+
+        <div class="outer">
+        <div class="card">
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line leftl"></div>
+            <div class="line bottoml"></div>
+            <div class="line rightl"></div>
+            <div>Feedback oder Verbesserungsvorschläge?</div>
+            <button class="BtnF" onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSer7XcOrVjDXLf0uN3noEwadTGdfyiTdWQ4qch-lGNoGJ3p7w/viewform?usp=sf_link';">
+            </button>
+        </div>
+        </div>
 </div>
 
 </div>
-</section>
 <section id="Kategorie">
     <div class="title-container">
         Preiskategorien
@@ -528,7 +610,7 @@
 
 <div id="feature">
     <div id="team-section">
-        <div class="container">
+		<div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 text-center team-title">
                     <h2>Team</h2>
@@ -540,7 +622,7 @@
 
                     <div class="team-member">
                         <div class="team-status Founder">
-                            <p>Founder</p>
+                            <p>Host</p>
                         </div>
                         <a href="https://www.twitch.tv/frittiertboy">
 
@@ -552,7 +634,7 @@
                     </div>
                     <div class="team-member">
                         <div class="team-status Founder">
-                            <p>Founder</p>
+                            <p>Host</p>
                         </div>
                         <a href="https://www.twitch.tv/S4MARON">
 
@@ -581,7 +663,7 @@
 
                             <img alt="Member 1" src="images/no.png">
                         </a>
-                        <h4>Herr GHG</h4>
+                        <h4>Heer GHG</h4>
 
                     </div>
                     <div class="team-member">
@@ -596,7 +678,7 @@
                         <h4>TheRealJackson</h4>
 
                     </div>
-                    <!-- <div class="team-member">
+                    <div class="team-member">
                         <div class="team-status">
                             <p>Network</p>
                         </div>
@@ -607,7 +689,7 @@
                         </a>
                         <h4>Frosch</h4>
           
-                    </div> -->
+                    </div>
                     <div class="team-member">
                         <div class="team-status">
                             <p>Developer</p>
@@ -620,6 +702,127 @@
                         <h4>Timo</h4>
 
                     </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Show</p>
+                        </div>
+                        <a href="https://www.twitch.tv/pedaale">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/aaa6d17d-0495-4214-ac0d-56a6d79b9695-profile_image-70x70.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>Pedaale</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.twitch.tv/verku">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/55f21f31-7513-48c6-9141-62fbf653578c-profile_image-70x70.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>Verku</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.twitch.tv/schnizelwolke">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/577ab112-3730-430d-98a9-d95a6b3ecff8-profile_image-70x70.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>schnizelwolke</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="">
+          
+                            <img src="images/no.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>PepeCrazy</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.twitch.tv/mt43">
+          
+                            <img src="images/no.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>mt43</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.youtube.com/@AlpakaTV">
+          
+                            <img src="https://yt3.ggpht.com/1D5ff7owync9tC0BRE3kwFz15zs1qdAEhQGa7NlL1MzSeDljD2Czo7WOVN-s_IPuMjjMjV38Xw=s48-c-k-c0x00ffffff-no-rj"
+                                alt="Member 1">
+                        </a>
+                        <h4>AlpakaTV</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="">
+          
+                            <img src="images/no.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>xbubblesberry</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.twitch.tv/23raphi">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c58806cb-21aa-4ba8-b460-1b40379a95e7-profile_image-70x70.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>23raphi</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.youtube.com/@catdrox">
+          
+                            <img src="https://yt3.ggpht.com/UpupOJrHXpoTfi-14VAHF5vkszkO8nXMVFMI-VBHQlYF7QnlJUJvEOROcWwvL9ORbFalC2ygsQ=s48-c-k-c0x00ffffff-no-rj"
+                                alt="Member 1">
+                        </a>
+                        <h4>catdrox</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <div class="team-status">
+                            <p>Clip Ausw.</p>
+                        </div>
+                        <a href="https://www.twitch.tv/StonedPeepo">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/009119e2-cc97-4299-8586-6e15612e2756-profile_image-70x70.png"
+                                alt="Member 1">
+                        </a>
+                        <h4>StonedPeepo</h4>
+          
+                    </div>
+                    
 
                 </div>
             </div>
@@ -705,7 +908,7 @@
                     </div>
                     <div class="team-member">
                         <div class="team-status Founder">
-                            <p>Founder</p>
+                            <p>Host</p>
                         </div>
                         <a href="https://www.twitch.tv/frittiertboy">
 
@@ -749,7 +952,7 @@
                     </div>
                     <div class="team-member">
                         <div class="team-status Founder">
-                            <p>Founder</p>
+                            <p>Host</p>
                         </div>
                         <a href="https://www.twitch.tv/S4MARON">
 
@@ -767,7 +970,7 @@
                         <h4>zflockii</h4>
 
                     </div>
-
+                    
                     <div class="team-member">
                         <a href="https://www.twitch.tv/marcelements">
 
@@ -784,7 +987,7 @@
                         <h4>jamienichtjames</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/danielvansnipes">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/e7543e78-0d98-414c-8600-c623782ba599-profile_image-70x70.png">
@@ -800,7 +1003,7 @@
                         <h4>Wettermann_</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/getrekt2104">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4760fdc7-483e-4d40-983d-cf9ec4566ccd-profile_image-70x70.png">
@@ -808,7 +1011,7 @@
                         <h4>GetRekt2104</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/styxenia">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/1e386519-eb4a-42b7-9129-bef29dc45b97-profile_image-70x70.png">
@@ -816,7 +1019,7 @@
                         <h4>StyXenia</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/quertixxttv">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/71559037-6618-4fe8-a7e4-acb77be0c807-profile_image-70x70.png">
@@ -824,7 +1027,7 @@
                         <h4>Quertixxttv</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/kyrox_at">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b7e9b0f9-34e6-4e15-9010-73ac39f163b6-profile_image-70x70.png">
@@ -832,7 +1035,7 @@
                         <h4>Kyrox_at</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/zlogischsw">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/ade95b7f-bf20-46bf-a548-192bee0e61f1-profile_image-70x70.png">
@@ -840,7 +1043,7 @@
                         <h4>zLogischSW</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/sirexpert_">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fa335c8c-3ca8-4ddf-a212-0146c2f88484-profile_image-70x70.png">
@@ -848,7 +1051,7 @@
                         <h4>Sirexpert_</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/einnetro">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fef1bcf1-daf2-4bab-94ee-4d58c473ce2e-profile_image-70x70.png">
@@ -856,7 +1059,7 @@
                         <h4>EinNetro</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/2_flying_uwe">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/97706d4b-15f3-4117-a356-168f6f52e62c-profile_image-70x70.png">
@@ -864,7 +1067,7 @@
                         <h4>2_flying_uwe</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/uzunaa">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/eae79125-f155-49bc-b217-4868e59462d5-profile_image-70x70.jpeg">
@@ -872,7 +1075,7 @@
                         <h4>Uzunaa</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/clayten">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4aee2d3d-773b-40e8-8617-d18061eda94b-profile_image-70x70.png">
@@ -880,7 +1083,7 @@
                         <h4>Clayten</h4>
 
                     </div>
-                    <div class="team-member">
+					<div class="team-member">
                         <a href="https://www.twitch.tv/verboxter">
 
                             <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b873b839-9328-4c34-be6c-14d20f754c43-profile_image-70x70.png">
@@ -890,107 +1093,107 @@
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/einfachdings">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/13be68fd-faa7-49a1-b51d-9a53125837f1-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/13be68fd-faa7-49a1-b51d-9a53125837f1-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>einfachdings</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/miilanee">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/6db9bd81-1798-495c-8881-2e4d07b7b7ee-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6db9bd81-1798-495c-8881-2e4d07b7b7ee-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>miilanee</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/mdracon">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/e170e0ae-4671-41de-adc8-3f5094734f3c-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e170e0ae-4671-41de-adc8-3f5094734f3c-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>MDracon</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/bottee__">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fd013118-b3ad-47f9-aec5-1c9bd9fb3ea2-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fd013118-b3ad-47f9-aec5-1c9bd9fb3ea2-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>bottee__</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/derdickemichiiii">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3992fcc9-6de5-4a45-b976-dcba1cf30aed-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3992fcc9-6de5-4a45-b976-dcba1cf30aed-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>DerDickeMichiiii</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/bymaqical">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/0188dc19-9ecb-42fd-a272-a37423d961e5-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0188dc19-9ecb-42fd-a272-a37423d961e5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>byMaqical</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/erdnusskopp/videos">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/277c351c-c1d0-4147-9990-ff7b734b2b62-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/277c351c-c1d0-4147-9990-ff7b734b2b62-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>ErdnussKopp</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/juzudo">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/0bf89d76-2cfb-46c3-9d5d-92b2c09d66a5-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0bf89d76-2cfb-46c3-9d5d-92b2c09d66a5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>juzudo</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/pilotenluz">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/beb825bb-92d5-4106-ab77-e916beef0366-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/beb825bb-92d5-4106-ab77-e916beef0366-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Pilotenluz</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/byjasmiiiin">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/b19b8983-3a2e-43cf-b5f9-4d56594327c5-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/b19b8983-3a2e-43cf-b5f9-4d56594327c5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>ByJasmiiiin</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/oparicoyt">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/c50365fa-8bb6-48a0-b44b-90b05c306a19-profile_image-70x70.jpeg">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c50365fa-8bb6-48a0-b44b-90b05c306a19-profile_image-70x70.jpeg" alt="Member 1">
                         </a>
                         <h4>OpaRicoYT</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/yuukiwuu">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a062e54-8afd-4de0-959d-d5f04b482c76-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a062e54-8afd-4de0-959d-d5f04b482c76-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>YuukiWuu</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/papriga">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fdac493d-5de0-41c9-92a8-4cdf96898a5f-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fdac493d-5de0-41c9-92a8-4cdf96898a5f-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>papriga</h4>
-
+          
                     </div>
                     <!-- <div class="team-member">
                         <a href="https://www.twitch.tv/lucblauhd">
@@ -1002,114 +1205,348 @@
                     </div> -->
                     <div class="team-member">
                         <a href="https://www.twitch.tv/schmuli__">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fcb02f70-fd82-4b77-8bc8-f2aa23f9b242-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fcb02f70-fd82-4b77-8bc8-f2aa23f9b242-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>schmuli__</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/fylumenius">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/f2951347-820b-428a-a2bc-e8fa709bba2e-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/f2951347-820b-428a-a2bc-e8fa709bba2e-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Fylumenius</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/jan0schi">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/d32bd503-24aa-42d0-9a23-ba3a68bd803c-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/d32bd503-24aa-42d0-9a23-ba3a68bd803c-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Jan0schi</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/katrinkatjuscha">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf1820c1-06f6-45e0-8d27-230ba7e8662e-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf1820c1-06f6-45e0-8d27-230ba7e8662e-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>KatrinKatjuscha</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/dreix31">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/7de16db1-55e4-4539-8f37-07e085086ab5-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/7de16db1-55e4-4539-8f37-07e085086ab5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>DreiX31</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/hynamorii">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/e5aebb7d-ce51-497a-ab63-d9d8b2b7d235-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e5aebb7d-ce51-497a-ab63-d9d8b2b7d235-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Hynamorii</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/mareex_">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/8727b1eb-8f09-43f6-9b63-8c5347b9ecc1-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/8727b1eb-8f09-43f6-9b63-8c5347b9ecc1-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>mareex_</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/angieeeeee">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/c872d728-8455-4c43-970c-290868c8e5f5-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c872d728-8455-4c43-970c-290868c8e5f5-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>angieeeeee</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/lexoleni">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/d9b19a4c-317e-4cef-be71-667e7ec2670b-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/d9b19a4c-317e-4cef-be71-667e7ec2670b-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>LexoLeni</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/pacboya1">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/6d8e421e-b09a-46b9-819d-918fdb411a44-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6d8e421e-b09a-46b9-819d-918fdb411a44-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>PacboyA1</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/spaddyzockt">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/34022f1c-580b-4476-a3b7-413578cefb1a-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/34022f1c-580b-4476-a3b7-413578cefb1a-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>Spaddyzockt</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/lordzaros_">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1f66202-c2c5-46ca-9fe2-4218c0ddb62c-profile_image-70x70.jpeg">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1f66202-c2c5-46ca-9fe2-4218c0ddb62c-profile_image-70x70.jpeg" alt="Member 1">
                         </a>
                         <h4>lordzaros_</h4>
-
+          
                     </div>
                     <div class="team-member">
                         <a href="https://www.twitch.tv/vanutella">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf099fd1-e3a9-439b-baf2-dd6bd3cfbbc2-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/bf099fd1-e3a9-439b-baf2-dd6bd3cfbbc2-profile_image-70x70.png" alt="Member 1">
                         </a>
                         <h4>vanutella</h4>
-
+          
                     </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/jamy_mit_y">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fe114ba9-d85c-437f-9899-c8c231665347-profile_image-70x70.jpeg" alt="Member 1">
+                        </a>
+                        <h4>Jamy_mit_Y</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/pandorsaurus">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/11cfc6bb-eed4-4c67-9dba-13e00316c871-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>Pandorsaurus</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/njushka">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1bad6844-2c03-4b0b-ab82-1632f420f0a3-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>njushka</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/mommmme">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3fe48061-f230-4802-a9e9-e19375399de6-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>MOMMMME</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/ohayo_vt">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/9a80bbab-01b8-4fcd-b45f-7c4e1a36944b-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>OHAYO_vt</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/nxghtw1tch">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/58b043d8-df56-4651-ba9a-b151f2874913-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>nxghtw1tch</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/knxvilleone">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/34a9b26e-ab31-4d0b-9711-62d2b2ad6dcb-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>knxvilleONE</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/zringraid">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/36aa45de-fea6-4d7a-a078-7cc64299e6cd-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>zRingraid</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/wandellax">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/398f00da-aa7c-4171-8a50-0a6ceb8eb2f1-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>Wandellax</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/itsnax0">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac482095-d5ca-462a-97fe-a47ec466702d-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>itsNax0</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/icyvace">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1f891da2-59d2-4229-b2c7-a96a5850bfe0-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>icyVACE</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/minooo99_">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/010c0ba6-8bb4-4df0-9e7d-9fa64bfe57ea-profile_image-70x70.jpeg" alt="Member 1">
+                        </a>
+                        <h4>Minooo99_</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/pixelstefan">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/dd83ddb5-e69c-499b-aec8-0e72ad929ef9-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>pixelstefan</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/theseinetv">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/f0b21c61-b025-4c3f-bf85-3f128ee97c86-profile_image-70x70.jpeg" alt="Member 1">
+                        </a>
+                        <h4>TheSeineTV</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/vantasticngt">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/22ef6d0d-ea32-440a-a468-89fc9dc8f264-profile_image-70x70.jpeg" alt="Member 1">
+                        </a>
+                        <h4>VantasticNGT</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/xTornadotommy">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ad1c431b-f7b6-4899-9a9c-f15f2882e4d0-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>xtornadotommy</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/teekqu">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/b9d7ac65-d00f-4cb0-8124-ef7f6777b69c-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>Teekqu</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/cronixval">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/522823f6-497e-40aa-a1e8-62cad46270f1-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>cronixval</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/einjulchen">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e229c676-1a85-467a-af48-2f9ce6f0730d-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>einjulchen</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/joedom_">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/148474a9-bdc0-4d63-b79a-748b6af31f04-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>JoeDom_</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/xoxogledi">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/db31cd74-3bdd-4a6c-aa54-872e85364903-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>xoxoGledi</h4>
+          
+                    </div>
+					<div class="team-member">
+                        <a href="https://www.twitch.tv/lilayleen">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ceae7ed6-11ca-4219-af54-17a48faf644c-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>lilayleen</h4>
+          
+                    </div>
+					<div class="team-member">
+                        <a href="https://www.twitch.tv/janskii_">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/33dbb782-c5e0-49b6-b963-2b6d6cdba65d-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>janskii_</h4>
+          
+                    </div>
+					<div class="team-member">
+                        <a href="https://www.twitch.tv/uniqatuniqat">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c3d135f8-06b3-4053-a225-aca1ae814cb2-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>uniqatuniqat</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/pommeskiwi">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/8d9fc65a-5866-4b45-841b-e41fb122d57b-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>PommesKiwi</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/aniishka">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/5ce0b6e6-80db-4c3f-a070-1398689a26d5-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>Aniishka</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/maaareq">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/18729d54-f88c-4766-a743-3edf4893022a-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>maaareq</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/desmopsel">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/de7fa50f-9902-4bf3-b7cf-186c135d9086-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>DesMopsel</h4>
+          
+                    </div>
+                    <div class="team-member">
+                        <a href="https://www.twitch.tv/zweimpeter">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c6b67eb2-ecd7-42e9-b1a9-28947dc8ac2d-profile_image-70x70.png" alt="Member 1">
+                        </a>
+                        <h4>ZweiMPeter</h4>
+          
+                    </div>
+                    
+
 
 
                 </div>
             </div>
         </div>
-
+        
     </div>
 
 </div>
@@ -1166,9 +1603,88 @@
         </div>
     </div>
 </section>  -->
+<div class="CO">
+    <div class="image-section">
+        <!-- Bild -->
+        <img src="images/sc5.png" alt="Survival Craft 5">
 
-<!-- /.footer -->
-<a class="bugy" href="https://docs.google.com/forms/u/0/d/e/1FAIpQLScG-FVDVAo3qGZuGjZ-aCE1B4v9eouf-2tvqjpnLpkx0B35nw/formResponse"><img alt="logo" src="images/bug.png"></a>
+        <!-- Overlay-Container -->
+        <a href="https://www.youtube.com/watch?v=TqJGQTOk6z0" class="overlay-container">
+        </a>
+        <a href="https://www.twitch.tv/robotter112" class="byline">
+            <a href="https://www.twitch.tv/jamy_mit_y" class="byline2"></a>
+        </a>
+    </div>
+    <div class="image-section2">
+        <!-- Bild mit Link -->
+        <a href="https://linktr.ee/minecraftvana" target="_blank">
+            <img src="images/mcvana.png" alt="Minecraft Vana">
+        </a>
+    </div>
+    <div class="image-section3">
+        <!-- Bild mit Link -->
+        <a href="https://discord.gg/streamerdach" target="_blank">
+            <img src="images/DSG.png" alt="Dach Streamer Gesellschaft">
+        </a>
+    </div>
+</div>
+<!-- <section id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 wow fadeInRight animated" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; -webkit-animation-delay: 0.8s; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+                <h2 class="title">Our Focused on Feature</h2>
+
+                <div class="feature-item">
+
+                    <div class="media">
+                        <div class="pull-left icon" href="#">
+                            <i class="fa fa-paint-brush"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Reliable and Secure Platform</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisici ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+
+                    <div class="media">
+                        <div class="pull-left icon" href="#">
+                            <i class="fa fa-rss"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Everything is perfectly orgainized</h4>
+                            <p>Aipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+
+                    <div class="media">
+                        <div class="pull-left icon" href="#">
+                            <i class="fa fa-recycle"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Rapid customer support</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; -webkit-animation-delay: 0.8s; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
+                <div class="block">
+                    <img class="img-responsive" src="images/featured-app.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  -->
+
+
+
+
 <footer id="footer">
 
     <div class="container">
@@ -1342,7 +1858,7 @@
 <!-- /.javascript files -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/custom2.js"></script>
 <script src="js/jquery.sticky.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
@@ -1351,409 +1867,944 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8REJXR93X"></script>
 
 <script type="text/javascript">
-    // jQuery DOM Ready
-    $(document).ready(function () {
-        // Initialize WOW.js
-        new WOW().init();
 
-        // Lightbox functionality
-        $(document).on('click', '*[data-toggle="lightbox"]', function (event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
+       // Select all images from the team list
+       let teamMembers = Array.from(document.querySelectorAll('.team-container .team-member img'));
+let remainingImages = [...teamMembers];
 
-        // Handle Impressum opening and closing
-        $('#openImpressum').on('click', function () {
-            $('#impressumContainer').fadeIn(); // Smooth opening
-        });
+// Function to shuffle an array
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-        $('#closeImpressum').on('click', function () {
-            console.log("Schließen-Button wurde geklickt"); // Debugging log
-            $('#impressumContainer').fadeOut(); // Smooth closing
-        });
+// Initial shuffle of images
+shuffle(remainingImages);
 
-        // Close Impressum when clicking outside the container
-        $(window).on('click', function (event) {
-            if ($(event.target).is('#impressumContainer')) {
-                $('#impressumContainer').fadeOut();
-            }
-        });
+function displayRandomImage() {
+    const animatedContainer = document.querySelector('.animated-image-container');
 
-
-        // Countdown Timer
-        const countdownDate = new Date("Nov 15, 2024 20:00:00").getTime();
-        const countdownFunction = setInterval(function () {
-            const now = new Date().getTime();
-            const timeLeft = countdownDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            $('#days').text(days);
-            $('#hours').text(hours);
-            $('#minutes').text(minutes);
-            $('#seconds').text(seconds);
-
-            if (timeLeft < 0) {
-                clearInterval(countdownFunction);
-                $('#timer').text("Es geht in wenigen Momenten weiter");
-            }
-        }, 1000);
-
-        // Function to start confetti from a specific element
-        function startConfettiFromElement($element) {
-            const rect = $element[0].getBoundingClientRect(); // Get position of the element
-
-            const x = (rect.left + rect.width / 2) / window.innerWidth;  // X-Position relative to viewport
-            const y = (rect.top + rect.height / 2) / window.innerHeight; // Y-Position relative to viewport
-
-            // Start confetti from this position
-            confetti({
-                particleCount: 10,
-                spread: 30,
-                startVelocity: 20,
-                gravity: 1,
-                origin: {x: x, y: y},
-                colors: ['#FFD700'],
-                shapes: ['square']
-            });
-        }
-
-        // Confetti on mouseover on the element with ID 'confetti-trigger'
-        $('#confetti-trigger').on('mouseover', function () {
-            startConfettiFromElement($(this));
-        });
-
-        // Confetti on click on the element with ID 'confetti-trigger'
-        $('#confetti-trigger').on('click', function () {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: {y: 0.6}
-            });
-        });
-    });
-
-    // Google Tag (gtag.js)
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
+    // If remainingImages is empty, refill it and shuffle
+    if (remainingImages.length === 0) {
+        remainingImages = [...teamMembers];
+        shuffle(remainingImages);
     }
 
-    gtag('js', new Date());
-    gtag('config', 'G-G8REJXR93X');
-    $(document).ready(function () {
-        // Initialize WOW.js
-        new WOW().init();
+    // Get the next image from the shuffled remaining list and remove it
+    const nextImage = remainingImages.pop();
+    const randomImageSrc = nextImage.src;
 
-        // Function to check if user is logged in
-        function checkLoginStatus() {
-            $.ajax({
-                url: '/api/user', // Fetch user data from backend
-                method: 'GET',
-                success: function (data) {
-                    const $userInfo = $('#user-info');
-                    const $loginButton = $('#openLoginPopup');
-                    const $usernameElement = $('#username');
-                    const $submissionContainer = $('.submission-container');
+    const imgElement = document.createElement('img');
+    imgElement.src = randomImageSrc;
+    imgElement.alt = "Random team member";
+    imgElement.classList.add('animated-image');
 
-                    if (data.user) {
-                        // User is logged in, display user info
-                        $userInfo.show();
-                        $loginButton.hide();
-                        $submissionContainer.removeClass('blurred');
-                        $usernameElement.text(data.user.username);
-                    } else {
-                        // User is not logged in, show login button
-                        $submissionContainer.addClass('blurred');
-                        $userInfo.hide();
-                        $loginButton.show();
-                    }
-                },
-                error: function () {
-                    console.error('Error fetching user data');
-                }
-            });
-        }
+    // Position the image randomly within the container
+    imgElement.style.top = `${Math.random() * 80}%`;
+    imgElement.style.left = `${Math.random() * 80}%`;
 
-        // Call the checkLoginStatus function when the page loads
-        checkLoginStatus();
+    animatedContainer.appendChild(imgElement);
 
-        // Open the login popup when clicking the login button
-        document.getElementById('openLoginPopup').addEventListener('click', function () {
-            document.getElementById('loginPopup').style.display = 'block';
-        });
+    // Fade out and remove the image after 20 seconds
+    setTimeout(() => {
+        imgElement.classList.add('fade-out');
+        setTimeout(() => imgElement.remove(), 2000); // 2s fade-out duration
+    }, 11000); // Start fade-out after 18 seconds to match 20s total
 
-        // Close the login popup when clicking on the close button
-        document.getElementById('closeLogin').addEventListener('click', function () {
-            document.getElementById('loginPopup').style.display = 'none';
-        });
+    // Set a delay before displaying the next image
+    setTimeout(displayRandomImage, 2000); // 5 seconds delay
+}
 
-        // Close the popup when clicking outside the content
-        window.addEventListener('click', function (event) {
-            const modal = document.getElementById('loginPopup');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Lightbox functionality
-        $(document).on('click', '*[data-toggle="lightbox"]', function (event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-
-        // Handle Impressum opening and closing
-        $('#openImpressum').on('click', function () {
-            $('#impressumContainer').fadeIn(); // Smooth opening
-        });
-
-        $('#closeImpressum').on('click', function () {
-            $('#impressumContainer').fadeOut(); // Smooth closing
-        });
-
-        // Close Impressum when clicking outside the container
-        $(window).on('click', function (event) {
-            if ($(event.target).is('#impressumContainer')) {
-                $('#impressumContainer').fadeOut();
-            }
-        });
-
-        // Countdown Timer
-
-
-        // Function to start confetti from a specific element
-        function startConfettiFromElement($element) {
-            const rect = $element[0].getBoundingClientRect(); // Get position of the element
-
-            const x = (rect.left + rect.width / 2) / window.innerWidth;  // X-Position relative to viewport
-            const y = (rect.top + rect.height / 2) / window.innerHeight; // Y-Position relative to viewport
-
-            // Start confetti from this position
-            confetti({
-                particleCount: 10,
-                spread: 30,
-                startVelocity: 20,
-                gravity: 1,
-                origin: {x: x, y: y},
-                colors: ['#FFD700'],
-                shapes: ['square']
-            });
-        }
-
-        // Confetti on mouseover on the element with ID 'confetti-trigger'
-        $('#confetti-trigger').on('mouseover', function () {
-            startConfettiFromElement($(this));
-        });
-
-        // Confetti on click on the element with ID 'confetti-trigger'
-        $('#confetti-trigger').on('click', function () {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: {y: 0.6}
-            });
-        });
-    });
-
-    // Google Tag (gtag.js)
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
+// CSS adjustments for fade-out effect
+const style = document.createElement('style');
+style.innerHTML = `
+    .animated-image {
+        opacity: 1;
+        transition: opacity 2s ease;
     }
+    .fade-out {
+        opacity: 0;
+    }
+`;
+document.head.appendChild(style);
 
-    //
-    // // Kategorie-Button Klick-Event
-    // const categoryBtn = document.querySelector('.dropbtn');
-    // const dropdownLinks = document.querySelectorAll('.dropdown-content a');
-    // const submitBtn = document.getElementById('submit-btn');
-    // let selectedCategory = '';
-    // const clipUrlInput = document.getElementById('clip-url');
-    //
-    // // Kategorie-Auswahl
-    // dropdownLinks.forEach(link => {
-    //     link.addEventListener('click', function (event) {
-    //         event.preventDefault();
-    //         selectedCategory = this.getAttribute('data-category');
-    //         categoryBtn.textContent = `${selectedCategory}`;
-    //
-    //         // Absenden-Button aktivieren
-    //         submitBtn.classList.remove('disabled');
-    //     });
-    // });
-    //
-    // // Absenden-Button
-    // submitBtn.addEventListener('click', function () {
-    //     if (selectedCategory) {
-    //         if (selectedCategory && clipUrlInput.value) {
-    //             alert(`Clip in Kategorie: ${selectedCategory} eingesendet!`);
-    //
-    //             // Zurücksetzen des Buttons und Textfelds nach erfolgreichem Absenden
-    //             categoryBtn.textContent = 'Kategorie wählen';
-    //             submitBtn.classList.add('disabled');
-    //             clipUrlInput.value = ''; // Textfeld zurücksetzen
-    //             selectedCategory = ''; // Kategorie zurücksetzen
-    //         } else {
-    //             alert('Bitte einen Clip-Link einfügen.');
-    //         }
-    //     } else {
-    //         alert('Bitte eine Kategorie auswählen.');
-    //     }
-    // });
+// Start the display process
+displayRandomImage();
 
+    // Global namespace for functions called from HTML
+    window.SSA = {
+        startVoting: () => {
+            SmallStreamAwards.voting.start();
+        },
 
-    // Function to fetch and populate categories
-    function fetchCategories() {
-        $.ajax({
-            url: '/api/prize-categories', // Endpoint to fetch prize categories
+        nextCategory: () => {
+            SmallStreamAwards.voting.handleNextCategory();
+        },
+
+        prevCategory: () => {
+            SmallStreamAwards.voting.handlePrevCategory();
+        },
+
+        submitVote: () => {
+            SmallStreamAwards.voting.submitVote();
+        }
+    };
+
+    function fetchClipMetadata(clipId, $element, callback) {
+        $.ajax( {
+            url: `/api/clip-metadata/${clipId}`,
             method: 'GET',
-            success: function (response) {
-                if (response.success && response.categories.length > 0) {
-                    const dropdownMenu = $('#dropdown-menu');
-                    dropdownMenu.empty(); // Clear any existing categories
+            success: (response) => {
+                if (response.success && response.clipMetadata) {
+                    const metadata = response.clipMetadata;
 
-                    // Add categories dynamically
-                    response.categories.forEach(category => {
-                        const categoryLink = $('<a>')
-                            .attr('href', '#')
-                            .attr('data-category', category.id)
-                            .text(category.name);
+                    // Update title and streamer name in the element
+                    $element.find( '.clip-title' ).text( metadata.title );
+                    $element.find( '.streamer-name' ).text( metadata.streamerName );
 
-                        dropdownMenu.append(categoryLink);
-                    });
+                    // Set profile image if it's part of $element
+                    const $profileImg = $element.find( '.clip-item' );
+                    if ($profileImg.length > 0) {
+                        $profileImg.attr('style', `
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), 
+        url('${metadata.profileImageUrl}');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+`);
+                        $profileImg.attr( 'alt', `${metadata.streamerName} Profile` );
+                        $profileImg.show();
+                    }
 
-                    // Reattach click events to dynamically generated links
-                    attachCategorySelection();
+                    // Call the callback with metadata if provided
+                    if (callback) {
+                        callback( metadata );
+                    }
+                } else {
+                    console.error( 'Failed to load metadata for clip:', clipId );
+                    $element.find( '.clip-title' ).text( 'Fehler beim Laden' );
+                    $element.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
                 }
             },
-            error: function () {
-                console.error('Error fetching prize categories');
+            error: (error) => {
+                console.error( 'Error fetching clip metadata:', error );
+                $element.find( '.clip-title' ).text( 'Fehler beim Laden' );
+                $element.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
             }
-        });
+        } );
     }
 
-    // Attach category selection event
-    function attachCategorySelection() {
-        const categoryBtn = document.querySelector('.dropbtn');
-        const submitBtn = document.getElementById('submit-btn');
-        let selectedCategory = '';
-        const clipUrlInput = document.getElementById('clip-url');
-
-        // Handle category selection
-        $('#dropdown-menu a').on('click', function (event) {
-            event.preventDefault();
-            selectedCategory = $(this).data('category');
-            categoryBtn.textContent = $(this).text();
-
-            // Enable the submit button when category is selected
-            submitBtn.classList.remove('disabled');
-        });
-
-        // Submit button click event
-        $('#submit-btn').on('click', function () {
-            const clipUrl = clipUrlInput.value;
-
-            if (!clipUrl || !selectedCategory) {
-                alert('Bitte einen Clip-Link und eine Kategorie auswählen.');
-                return;
+    // Main application
+    const SmallStreamAwards = {
+        config: {
+            dates: {
+                votingEnd: new Date( "Dec 15, 2024 20:00:00" ).getTime()
+            },
+            apiEndpoints: {
+                auth: '/auth/twitch',
+                userInfo: '/api/user',
+                categories: '/api/prize-categories',
+                categoriesAndClips: '/api/categories-clips',
+                submitVote: '/api/vote-clips'
+            },
+            selectors: {
+                navigation: '#navbar-scroll',
+                countdownSection: '#countdown-section',
+                votingContainer: '#voting-container',
+                votingSummary: '#voting-summary',
+                clipsList: '#clips-container',
+                categoryTitle: '#voting-category-title',
+                selectedClip: '#selected-clip-container',
+                navigationButtons: '.navigation-buttons',
+                timer: '#timer',
+                thankYouMessage: '#thank-you-message'
             }
+        },
 
-            // Submit the clip via AJAX
-            $.ajax({
-                url: '/api/submit-clip',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    clip_url: clipUrl,
-                    prize_category_id: selectedCategory
-                }),
-                success: function (response) {
-                    if (response.success) {
-                        alert('Clip erfolgreich eingesendet!');
-                        clipUrlInput.value = ''; // Reset input field
-                        categoryBtn.textContent = 'Kategorie wählen'; // Reset category button
-                        submitBtn.classList.add('disabled'); // Disable submit button again
-                    } else {
-                        alert('Fehler beim Einsenden des Clips: ' + response.message);
+        state: {
+            currentPhase: 'voting',
+            selectedClips: {},
+            currentCategoryIndex: 0,
+            categories: [],
+            isLoggedIn: false,
+            hasVoted: false,
+            isLoadingCategories: false
+        },
+
+        init() {
+            $( document ).ready( () => {
+                console.log( 'Initializing Small Stream Awards...' );
+                this.setupComponents();
+                this.bindEvents();
+                this.auth.checkLoginStatus();
+                this.phases.checkCurrentPhase();
+                this.setupAnalytics();
+                this.voting.init();
+            } );
+        },
+
+        setupComponents() {
+            this.navigation.init();
+            this.countdown.init();
+            this.modals.init();
+            this.confetti.init();
+            new WOW().init();
+        },
+
+        bindEvents() {
+            $( '#start-voting-btn' ).on( 'click', () => {
+                console.log( 'Start voting clicked' );
+                this.voting.start();
+            } );
+
+            // Global event handlers
+            $( '.scrollToTop' ).on( 'click', (e) => {
+                e.preventDefault();
+                $( 'html, body' ).animate( {scrollTop: 0}, 800 );
+            } );
+
+            // Handle mobile menu
+            $( '.navbar-toggle' ).on( 'click', function () {
+                $( '.navbar-themers' ).toggleClass( 'in' );
+            } );
+        },
+
+        auth: {
+            checkLoginStatus() {
+                $.ajax( {
+                    url: SmallStreamAwards.config.apiEndpoints.userInfo,
+                    method: 'GET',
+                    success: (data) => this.handleAuthResponse( data ),
+                    error: () => {
+                        console.error( 'Auth check failed' );
+                        this.handleAuthResponse( {user: null} );
                     }
-                },
-                error: function (error) {
-                    console.error('Error submitting clip:', error);
-                    alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
-                }
-            });
-        });
-    }
+                } );
+            },
 
-    // Fetch categories on page load
-    fetchCategories();
+            handleAuthResponse(data) {
+                const elements = {
+                    userInfo: $( '#user-info' ),
+                    loginButton: $( '#openLoginPopup' ),
+                    username: $( '#username' ),
+                    votingSection: $( '.start-voting-btn' )
+                };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const clipTarget = 500;  // Die Zielzahl für Clips
-        const userTarget = 200;  // Die Zielzahl für User
-        const duration = 5000;   // Dauer des Hochzählens in Millisekunden (7 Sekunden)
+                if (data.user) {
+                    elements.userInfo.show();
+                    elements.loginButton.hide();
+                    elements.votingSection.removeClass( 'blurred' );
+                    elements.username.text( data.user.username );
+                    SmallStreamAwards.state.isLoggedIn = true;
 
-        function countUp(elementId, target) {
-            const element = document.getElementById(elementId);
-            let startValue = 0;
-            const increment = target / (duration / 100); // Steigerung alle 100ms
-
-            const counter = setInterval(() => {
-                startValue += increment;
-                if (startValue >= target) {
-                    element.textContent = `+${target}`; // Setze das finale Ziel mit einem "+" Zeichen
-                    clearInterval(counter);
+                    // New: Check if user has already voted
+                    this.checkVotingStatus();
                 } else {
-                    element.textContent = `+${Math.floor(startValue)}`;
+                    elements.votingSection.addClass( 'blurred' );
+                    elements.userInfo.hide();
+                    elements.loginButton.show();
+                    SmallStreamAwards.state.isLoggedIn = false;
                 }
-            }, 100); // Alle 100ms aktualisieren
-        }
+            },
 
-        countUp('clip-count', clipTarget);
-        countUp('user-count', userTarget);
-    });
+            // New: Check if user has already voted
+            checkVotingStatus() {
+                $.ajax( {
+                    url: '/api/has-voted',
+                    method: 'GET',
+                    success: (response) => {
+                        if (response.success && response.hasVoted) {
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const rightInfoContainer = document.querySelector('.info-container-right'); // Rechter Container
-        const dropBtn = document.getElementById('category-btn');
-
-        // Funktion zum Setzen des z-index auf -1
-        function disableInteractions() {
-            rightInfoContainer.style.zIndex = '-1';  // z-index auf -1 setzen
-        }
-
-        // Funktion zum Zurücksetzen des z-index auf 1
-        function enableInteractions() {
-            rightInfoContainer.style.zIndex = '1';  // z-index auf 1 zurücksetzen
-        }
-
-        // Ereignis für das Öffnen des Dropdown-Menüs
-        dropBtn.addEventListener('click', function () {
-            dropdownMenu.classList.toggle('show'); // Dropdown sichtbar machen
-            if (dropdownMenu.classList.contains('show')) {
-                disableInteractions(); // z-index auf -1 setzen
-            } else {
-                enableInteractions(); // z-index wieder auf 1 setzen
+                            SmallStreamAwards.state.hasVoted = true;
+                            $( '#voting-summary' ).hide();
+                            $( '#start-voting-btn' ).hide();
+                            $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
+                            SmallStreamAwards.confetti.triggerConfetti( 'large' );
+                        } else {
+                            SmallStreamAwards.state.hasVoted = false;
+                        }
+                    },
+                    error: (error) => {
+                        console.error( 'Error checking voting status:', error );
+                    }
+                } );
             }
-        });
+        },
 
-        // Schließen des Dropdowns, wenn irgendwo außerhalb geklickt wird
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.dropbtn')) {
-                if (dropdownMenu.classList.contains('show')) {
-                    dropdownMenu.classList.remove('show');
-                    enableInteractions(); // z-index wiederherstellen, wenn Dropdown geschlossen wird
+        navigation: {
+            init() {
+                this.setupNavigation();
+                this.setupScrollBehavior();
+            },
+
+            setupNavigation() {
+                $( 'a[href^="#"]' ).on( 'click', function (event) {
+                    event.preventDefault();
+                    const target = $( this.getAttribute( 'href' ) );
+                    if (target.length) {
+                        $( 'html, body' ).animate( {
+                            scrollTop: target.offset().top - 80
+                        }, 1000 );
+                    }
+                } );
+            },
+
+            setupScrollBehavior() {
+                $( window ).on( 'scroll', () => {
+                    const scrollPos = $( window ).scrollTop();
+                    $( '.scrollToTop' ).toggleClass( 'visible', scrollPos > 300 );
+                    this.updateActiveNavItem( scrollPos );
+                } );
+            },
+
+            updateActiveNavItem(scrollPos) {
+                $( 'section' ).each( function () {
+                    const sectionTop = $( this ).offset().top - 100;
+                    const sectionBottom = sectionTop + $( this ).height();
+                    const navItem = $( `a[href="#${$( this ).attr( 'id' )}"]` );
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        navItem.addClass( 'active' );
+                    } else {
+                        navItem.removeClass( 'active' );
+                    }
+                } );
+            }
+        },
+
+        countdown: {
+            init() {
+                this.startCountdown();
+            },
+
+            startCountdown() {
+                const updateTimer = () => {
+                    const now = new Date().getTime();
+                    const timeLeft = SmallStreamAwards.config.dates.votingEnd - now;
+
+                    if (timeLeft < 0) {
+                        $( SmallStreamAwards.config.selectors.timer )
+                            .text( "Es geht in wenigen Momenten weiter" );
+                        return;
+                    }
+
+                    const time = this.calculateTimeRemaining( timeLeft );
+                    this.updateDisplay( time );
+                };
+
+                updateTimer();
+                setInterval( updateTimer, 1000 );
+            },
+
+            calculateTimeRemaining(timeLeft) {
+                return {
+                    days: Math.floor( timeLeft / (1000 * 60 * 60 * 24) ),
+                    hours: Math.floor( (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) ),
+                    minutes: Math.floor( (timeLeft % (1000 * 60 * 60)) / (1000 * 60) ),
+                    seconds: Math.floor( (timeLeft % (1000 * 60)) / 1000 )
+                };
+            },
+
+            updateDisplay(time) {
+                $( '#days' ).text( time.days );
+                $( '#hours' ).text( time.hours );
+                $( '#minutes' ).text( time.minutes );
+                $( '#seconds' ).text( time.seconds );
+            }
+        },
+
+        modals: {
+            init() {
+                this.setupImpressum();
+                this.setupLoginModal();
+            },
+
+            setupImpressum() {
+                const $impressum = $( '#impressumContainer' );
+
+                $( '#openImpressum' ).on( 'click', () => $impressum.fadeIn() );
+                $( '#closeImpressum' ).on( 'click', () => $impressum.fadeOut() );
+
+                $( window ).on( 'click', (event) => {
+                    if ($( event.target ).is( '#impressumContainer' )) {
+                        $impressum.fadeOut();
+                    }
+                } );
+            },
+
+            setupLoginModal() {
+                const $loginPopup = $( '#loginPopup' );
+
+                $( '#openLoginPopup' ).on( 'click', () => $loginPopup.show() );
+                $( '#closeLogin' ).on( 'click', () => $loginPopup.hide() );
+
+                $( window ).on( 'click', (event) => {
+                    if (event.target === $loginPopup[0]) {
+                        $loginPopup.hide();
+                    }
+                } );
+            }
+        },
+
+        voting: {
+            init() {
+                console.log( 'Initializing voting system...' );
+                this.bindNavigationEvents();
+                this.fetchCategories();
+            },
+
+
+            start() {
+                console.log( 'Starting voting process...' );
+
+                // Check if user is logged in
+                if (!SmallStreamAwards.state.isLoggedIn) {
+                    console.log( 'User not logged in, showing login popup' );
+                    $( '#openLoginPopup' ).click();
+                    return;
                 }
+
+                // Check if categories are still loading
+                if (SmallStreamAwards.state.isLoadingCategories) {
+                    console.log( 'Categories still loading, waiting...' );
+                    return;
+                }
+
+                // Check if categories are loaded, if not fetch them
+                if (!SmallStreamAwards.state.categories || SmallStreamAwards.state.categories.length === 0) {
+                    console.log( 'No categories loaded, fetching...' );
+                    this.fetchCategories( () => this.showVotingInterface() );
+                    return;
+                }
+
+                // If user has already voted, show thank you message and trigger confetti
+                if (SmallStreamAwards.state.hasVoted) {
+                    $( '#voting-summary' ).hide();
+                    $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
+                    SmallStreamAwards.confetti.triggerConfetti( 'large' );
+                    return;
+                }
+
+                // Show voting interface if no conditions above were met
+                this.showVotingInterface();
+            },
+
+            showVotingInterface() {
+                console.log( 'Showing voting interface' );
+                $( SmallStreamAwards.config.selectors.countdownSection ).hide();
+                $( SmallStreamAwards.config.selectors.votingContainer ).show();
+                this.loadCurrentCategory();
+            },
+
+            fetchCategories(callback) {
+                if (SmallStreamAwards.state.isLoadingCategories) {
+                    console.log( 'Already loading categories...' );
+                    return;
+                }
+
+                SmallStreamAwards.state.isLoadingCategories = true;
+                console.log( 'Fetching categories...' );
+
+                $.ajax( {
+                    url: SmallStreamAwards.config.apiEndpoints.categoriesAndClips,
+                    method: 'GET',
+                    success: (response) => {
+                        SmallStreamAwards.state.isLoadingCategories = false;
+                        if (response.success) {
+                            console.log( 'Received categories:', response.categories );
+
+                            // Ensure we have all categories
+                            SmallStreamAwards.state.categories = response.categories;
+
+                            // Debug log each category
+                            SmallStreamAwards.state.categories.forEach( category => {
+                                console.log( `Category: ${category.name} (ID: ${category.id})` );
+                                console.log( `Number of clips: ${category.clips ? category.clips.length : 0}` );
+                            } );
+
+                            if (callback) callback();
+                        } else {
+                            console.error( 'Failed to fetch categories:', response.message );
+                        }
+                    },
+                    error: (error) => {
+                        SmallStreamAwards.state.isLoadingCategories = false;
+                        console.error( 'Error fetching categories:', error );
+                    }
+                } );
+            },
+            clearSelectedClipDisplay() {
+                const $selectedClip = $( SmallStreamAwards.config.selectors.selectedClip );
+                $selectedClip.html( `
+        <div class="placeholder-container">
+            <p class="placeholder-text">Bitte wähle einen Clip aus.</p>
+        </div>
+    ` );
+            },
+
+            loadCurrentCategory() {
+                // Clear the previously selected clip display
+                this.clearSelectedClipDisplay();
+
+                const category = SmallStreamAwards.state.categories[SmallStreamAwards.state.currentCategoryIndex];
+                console.log('Loading category:', category);
+                console.log('Current category index:', SmallStreamAwards.state.currentCategoryIndex);
+                console.log('Total categories:', SmallStreamAwards.state.categories.length);
+
+                if (!category) {
+                    console.error('No category found for index:', SmallStreamAwards.state.currentCategoryIndex);
+                    return;
+                }
+
+                this.updateCategoryDisplay(category);
+                this.renderClips(category.clips || []);
+                this.updateNavigationButtons();
             }
-        });
-    });
+            ,
+
+            updateCategoryDisplay(category) {
+                $( SmallStreamAwards.config.selectors.categoryTitle ).html( `
+                <span class="category-label">KATEGORIE:</span> 
+                <span id="category-name">${category.name}</span>
+            ` );
+            },
+            renderClips(clips) {
+                console.log( `Rendering ${clips.length} clips for current category` );
+                const $container = $( SmallStreamAwards.config.selectors.clipsList ).empty();
+
+                if (!clips || clips.length === 0) {
+                    $container.html( `
+            <div class="no-clips-message">
+                <p>Keine Clips für diese Kategorie verfügbar.</p>
+            </div>
+        ` );
+                    return;
+                }
+
+                clips.forEach( clip => {
+                    this.createClipElement( clip, $container );
+                } );
+
+                this.enableClipSelection();
+            },
+
+            // createClipElement(clip, $container) {
+            //     // Initial clip element structure with placeholders
+            //     const $clipElement = $(`
+            //                             <div class="clip-item" role="button" tabindex="0" style="cursor: pointer;">
+            //                                 <div class="clip-info">
+            //                                     <img src="" alt="Streamer Profile" class="streamer-profile" style="display: none;" />
+            //                                     <div class="clip-details">
+            //                                         <h3 class="clip-title" title="Lade Titel...">Lade Titel...</h3>
+            //                                         <p class="streamer-name">Lade Streamer...</p>
+            //                                     </div>
+            //                                 </div>
+            //                                 <div class="clip-selection">
+            //                                     <h2 class="selection-text">Klicke, um diesen Clip zu wählen!</h2>
+            //                                     <div class="select-circle" onclick="selectClip('${clip.clipId}', this)">
+            //                                         <span class="cross">✕</span>
+            //                                     </div>
+            //                                 </div>
+            //                             </div>
+            //                         `);
+            //
+            //     $container.append($clipElement);
+            //
+            //     // Fetch metadata for each clip
+            //     $.ajax({
+            //         url: `/api/clip-metadata/${clip.clipId}`,
+            //         method: 'GET',
+            //         success: (response) => {
+            //             if (response.success && response.clipMetadata) {
+            //                 const metadata = response.clipMetadata;
+            //
+            //                 // Update clip title and streamer name
+            //                 $clipElement.find('.clip-title').text(metadata.title).attr('title', metadata.title);
+            //                 $clipElement.find('.streamer-name').text(metadata.streamerName);
+            //
+            //                 // Set profile image and make it visible
+            //                 const $profileImg = $clipElement.find('.streamer-profile');
+            //                 $profileImg.attr('src', metadata.profileImageUrl);
+            //                 $profileImg.attr('alt', `${metadata.streamerName} Profile`);
+            //                 $profileImg.show();
+            //             } else {
+            //                 console.error('Failed to load metadata for clip:', clip.clipId);
+            //             }
+            //         },
+            //         error: (error) => {
+            //             console.error('Error fetching clip metadata:', error);
+            //             $clipElement.find('.clip-title').text('Fehler beim Laden');
+            //             $clipElement.find('.streamer-name').text('Unbekannter Streamer');
+            //         }
+            //     });
+            // },
+
+            createClipElement(clip, $container) {
+                // Placeholder element with an image tag for profile picture
+                const $clipElement = $( `
+        <div class="clip-image">
+        <div class="clip-item" data-clip-id="${clip.clipId}">
+            
+            <div class="clip-info">
+                    <img alt="Streamer Profile" class="streamer-profile" src="" style="display: none;" />
+                <div class="clip-details">
+                    <p class="streamer-name">Lade Streamer...</p>
+                    <h3 class="clip-title">Lade Titel...</h3>
+                </div>
+            </div>
+            <div class="clip-selection">
+                <h2 class="selection-text">Klicke, um diesen Clip zu wählen!</h2>
+                <div class="select-circle">
+                    <span class="cross">&#10005;</span>
+                </div>
+            </div>
+            </div>
+        </div>
+    ` );
+
+                $container.append( $clipElement );
+
+                // Fetch clip metadata from the server
+                $.ajax( {
+                    url: `/api/clip-metadata/${clip.clipId}`,
+                    method: 'GET',
+                    success: (response) => {
+                        if (response.success && response.clipMetadata) {
+                            const metadata = response.clipMetadata;
+                            $clipElement.find( '.clip-title' ).text( metadata.title );
+                            $clipElement.find( '.streamer-name' ).text( metadata.streamerName );
+
+                            // Set profile image and make it visible
+                            const $profileImg = $clipElement.find( '.clip-item' );
+                            $profileImg.attr('style', `
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.95)), 
+        url('${metadata.profileImageUrl}');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+`);
+                            $profileImg.attr( 'alt', `${metadata.streamerName} Profile` );
+                            $profileImg.show();
+                        } else {
+                            console.error( 'Failed to load metadata for clip:', clip.clipId );
+                        }
+                    },
+                    error: (error) => {
+                        console.error( 'Error fetching clip metadata:', error );
+                        $clipElement.find( '.clip-title' ).text( 'Fehler beim Laden' );
+                        $clipElement.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
+                    }
+                } );
+            },
+            enableClipSelection() {
+                $( '.clip-item' ).off( 'click' ).on( 'click', function () {
+                    const clipId = $( this ).data( 'clip-id' );
+                    const categoryClips = SmallStreamAwards.state.categories[SmallStreamAwards.state.currentCategoryIndex].clips;
+                    const clip = categoryClips.find( c => c.clipId === clipId );
+
+                    if (clip) {
+                        SmallStreamAwards.voting.handleClipSelection( clip, this );
+                    }
+                } );
+            },
+
+            handleClipSelection(clip, element) {
+                this.updateSelectedClipDisplay( clip );
+                this.updateSelectionState( clip.clipId );
+                SmallStreamAwards.state.selectedClips[SmallStreamAwards.state.currentCategoryIndex] = clip.clipId;
+                this.enableNextButton();
+            },
+
+            updateSelectedClipDisplay(clip) {
+                const $selectedClip = $(SmallStreamAwards.config.selectors.selectedClip);
+
+                // Show loading placeholder while fetching metadata
+                $selectedClip.html(`
+        <div class="clip-info">
+            <div class="clip-details">
+                <p class="streamer-name">Loading streamer...</p>
+                <h3 class="clip-title">Loading title...</h3>
+            </div>
+        </div>
+        <div class="iframe-container">
+            <p>Loading clip...</p>
+        </div>
+    `).show();
+
+                // Check if metadata is already available
+                if (!clip.title || !clip.streamerName) {
+                    // Fetch metadata if not available, then update the display
+                    fetchClipMetadata(clip.clipId, $selectedClip, (metadata) => {
+                        // Update the clip object with fetched metadata
+                        clip.title = metadata.title;
+                        clip.streamerName = metadata.streamerName;
+
+                        // Call the function again with updated clip object to replace placeholder
+                        this.updateSelectedClipDisplay(clip);
+                    });
+                    return; // Exit to wait for metadata before proceeding with display
+                }
+
+                // Extract the clipId from the URL for embedding
+                const url = clip.clipTitle; // Ensure this is the actual URL containing the clipId
+                const match = url.match(/clip\/([a-zA-Z0-9_-]+)(\?|$)/);
+                const clipId = match ? match[1] : null;
+
+                if (!clipId) {
+                    console.error("Clip ID could not be extracted from URL:", url);
+                    return;
+                }
+
+                // Set the hostname for embedding
+                const hostname = window.location.hostname;
+
+                // Update `selected-clip-container` with fetched title and streamer name
+                $selectedClip.html(`
+        <div class="clip-info">
+            <div class="clip-details">
+                <p class="streamer-name">${clip.streamerName}</p>
+                <h3 class="clip-title">${clip.title}</h3> <!-- Use fetched title here -->
+            </div>
+        </div>
+        <div class="iframe-container">
+            <iframe 
+                src="https://clips.twitch.tv/embed?clip=${clipId}&parent=${hostname}&autoplay=true&muted=false" 
+               allowfullscreen>
+            </iframe>
+        </div>
+    `).show().get(0).scrollIntoView({behavior: "smooth", block: "center"});
+            }
+            ,
+
+            updateSelectionState(clipId) {
+                $( '.clip-item' ).addClass( 'disabled' )
+                    .find( '.select-circle' ).removeClass( 'selected' );
+
+                $( `.clip-item[data-clip-id="${clipId}"]` )
+                    .removeClass( 'disabled' )
+                    .find( '.select-circle' )
+                    .addClass( 'selected' );
+            },
+
+            handleNextCategory() {
+                if (SmallStreamAwards.state.currentCategoryIndex ===
+                    SmallStreamAwards.state.categories.length - 1) {
+                    this.showSummary();
+                } else {
+                    SmallStreamAwards.state.currentCategoryIndex++;
+                    this.loadCurrentCategory();
+                }
+            },
+
+            handlePrevCategory() {
+                if (SmallStreamAwards.state.currentCategoryIndex > 0) {
+                    SmallStreamAwards.state.currentCategoryIndex--;
+                    this.loadCurrentCategory();
+                }
+            },
+
+            updateNavigationButtons() {
+                const $prevBtn = $( '#prev-category-btn' );
+                const $nextBtn = $( '#next-category-btn' );
+                const currentIndex = SmallStreamAwards.state.currentCategoryIndex;
+                const categories = SmallStreamAwards.state.categories;
+
+                // Show or hide the previous button based on the current index
+                $prevBtn.toggle( currentIndex > 0 );
+
+                // Determine if we are at the last category
+                const isLastCategory = currentIndex === categories.length - 1;
+
+                // Set previous button text if there's a previous category
+                if (currentIndex > 0) {
+                    const prevCategoryName = categories[currentIndex - 1].name;
+                    $prevBtn.text( ` ◀◀  ${prevCategoryName} ` );
+                } else {
+                    $prevBtn.text( 'Zurück' ); // Default text if no previous category
+                }
+
+                // Set next button text to either the next category or "Zusammenfassung" if at the end
+                if (isLastCategory) {
+                    $nextBtn.text( 'Zusammenfassung' );
+                } else {
+                    const nextCategoryName = categories[currentIndex + 1].name;
+                    $nextBtn.text( ` ${nextCategoryName}  ▶▶ ` );
+                }
+
+                // Disable the next button if the current category has no selected clip
+                $nextBtn.prop( 'disabled', !SmallStreamAwards.state.selectedClips[currentIndex] );
+            },
+
+            enableNextButton() {
+                $( '#next-category-btn' ).prop( 'disabled', false );
+            },
+
+            showSummary() {
+                const $summary = $( SmallStreamAwards.config.selectors.votingSummary );
+                const $list = $( '#chosen-clips-list' ).empty();
+
+                SmallStreamAwards.state.categories.forEach( (category, index) => {
+                    const clipId = SmallStreamAwards.state.selectedClips[index];
+                    const clip = category.clips.find( c => c.clipId === clipId );
+
+                    if (clip) {
+                        const $summaryElement = this.createSummaryElement( category, clip );
+                        $list.append( $summaryElement );
+                    }
+                } );
+
+                $( SmallStreamAwards.config.selectors.votingContainer ).hide();
+                $summary.show().get( 0 ).scrollIntoView( {behavior: 'smooth'} );
+            }
+            ,
+
+            createSummaryElement(category, clip) {
+                const $summaryElement = $( `
+        <div class="category-container" role="button" tabindex="0">
+            <h3 class="category-title">
+                <span class="category-label">KATEGORIE:</span><br>
+                ${category.name}
+            </h3>
+            <div class="clip-info">
+                <div class="clip-details">
+                    <h4 class="clip-title">Lade Titel...</h4>
+                    <p class="streamer-name">Lade Streamer...</p>
+                </div>
+            </div>
+        </div>
+    ` );
+
+                // Klick-Event hinzufügen, um das iframe im ausgewählten Clip-Bereich anzuzeigen
+                $summaryElement.on( 'click', () => {
+                    this.updateSelectedClipDisplay( clip );
+                } );
+
+                // Clip-Metadaten abrufen und im Element anzeigen
+                fetchClipMetadata( clip.clipId, $summaryElement, (metadata) => {
+                    $summaryElement.find( '.clip-title' ).text( metadata.title );
+                    $summaryElement.find( '.streamer-name' ).text( metadata.streamerName );
 
 
+                } );
+
+                return $summaryElement;
+            }
+            ,
+
+            submitVote() {
+                // Prepare all votes
+                const votes = Object.entries( SmallStreamAwards.state.selectedClips ).map( ([categoryIndex, clipId]) => ({
+                    clip_submission_id: clipId,
+                    prize_category_id: SmallStreamAwards.state.categories[categoryIndex].id
+                }) );
+
+                // Check if we have votes for all categories
+                if (votes.length !== SmallStreamAwards.state.categories.length) {
+                    alert( 'Bitte wähle einen Clip für jede Kategorie aus.' );
+                    return;
+                }
+
+                // Submit all votes at once
+                $.ajax( {
+                    url: SmallStreamAwards.config.apiEndpoints.submitVote,
+                    method: 'POST',
+                    data: JSON.stringify( {votes} ),
+                    contentType: 'application/json',
+                    success: (response) => {
+                        if (response.success) {
+                            $( '#voting-summary' ).hide();
+                            $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
+                            SmallStreamAwards.state.hasVoted = true;
+                            SmallStreamAwards.confetti.triggerConfetti( 'large' );
+                        } else {
+                            alert( 'Fehler beim Abstimmen: ' + response.message );
+                        }
+                    },
+                    error: (error) => {
+                        console.error( 'Error submitting votes:', error );
+                        if (error.responseJSON && error.responseJSON.message) {
+                            alert( 'Fehler: ' + error.responseJSON.message );
+                        } else {
+                            alert( 'Fehler beim Abstimmen. Bitte versuche es später erneut.' );
+                        }
+                    }
+                } );
+            }
+        },
+
+        phases: {
+            checkCurrentPhase() {
+                const now = new Date().getTime();
+                if (now >= SmallStreamAwards.config.dates.votingEnd) {
+                    this.switchToResultsPhase();
+                }
+            },
+
+            switchToResultsPhase() {
+                SmallStreamAwards.state.currentPhase = 'results';
+                $( SmallStreamAwards.config.selectors.countdownSection ).hide();
+                $( SmallStreamAwards.config.selectors.votingContainer ).hide();
+                $( '#results-container' ).show();
+            }
+        },
+
+        confetti: {
+            init() {
+                const $trigger = $( '#confetti-trigger' );
+                if ($trigger.length) {
+                    $trigger.on( 'mouseover', () => this.triggerConfetti( 'small' ) );
+                    $trigger.on( 'click', () => this.triggerConfetti( 'large' ) );
+                }
+            },
+
+            triggerConfetti(size = 'small') {
+                const options = size === 'small' ? {
+                    particleCount: 30,
+                    spread: 50,
+                    origin: {y: 0.6}
+                } : {
+                    particleCount: 100,
+                    spread: 70,
+                    origin: {y: 0.6}
+                };
+
+                confetti( {
+                    ...options,
+                    colors: ['#ffd700', '#ffb347', '#ffa500'],
+                    shapes: ['square', 'circle']
+                } );
+            }
+        },
+
+        setupAnalytics() {
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () {
+                dataLayer.push( arguments );
+            };
+            gtag( 'js', new Date() );
+            gtag( 'config', 'G-G8REJXR93X' );
+        }
+    };
+
+    // Initialize when document is ready
+    $( document ).ready( () => {
+        // Initialize main application
+        SmallStreamAwards.init();
+
+        // Handle window load events
+        $( window ).on( 'load', () => {
+            $( '.preloader' ).fadeOut( 'slow' );
+        } );
+
+        // Handle window resize events
+        $( window ).on( 'resize', () => {
+            // Add any necessary responsive adjustments
+        } );
+    } );
 </script>
 
 </body>

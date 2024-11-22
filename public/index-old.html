@@ -26,7 +26,7 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
 
-    <link href="css/styles2.css" media="screen" rel="stylesheet">
+    <link href="css/styles.css" media="screen" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
@@ -44,46 +44,46 @@
 
         /* Popup container */
         .login-popup {
+            display: none; /* Hidden by default */
             position: fixed;
             z-index: 1000;
-            top: 0;
             left: 0;
-            display: none; /* Hidden by default */
-            overflow: auto;
+            top: 0;
             width: 100%;
             height: 100%;
+            overflow: auto;
             background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
         }
 
         /* Login content */
         .login-content {
-            position: relative;
-            width: 80%;
-            max-width: 400px;
+            background-color: #fff;
             margin: 15% auto;
             padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            position: relative;
             text-align: center;
-            border: 1px solid #888888;
-            background-color: #ffffff;
         }
 
         /* Close button */
         .close-btn {
+            color: #aaa;
+            float: right;
             font-size: 28px;
             font-weight: bold;
-            float: right;
-            color: #aaaaaa;
         }
 
         .close-btn:hover, .close-btn:focus {
-            cursor: pointer;
-            text-decoration: none;
             color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .blurred {
-            pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
             filter: blur(2px);
+            pointer-events: none; /* Verhindert Interaktionen mit dem unscharfen Bereich */
         }
 
         /* Form styling */
@@ -93,28 +93,28 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
             text-align: left;
+            margin-bottom: 5px;
         }
 
         .form-control {
-            font-size: 14px;
             width: 100%;
-            margin-bottom: 10px;
             padding: 10px;
-            border: 1px solid #cccccc;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 14px;
         }
 
         .submit-btn {
-            font-size: 16px;
             width: 100%;
             padding: 10px;
-            cursor: pointer;
+            background-color: #007BFF;
             color: white;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
         }
 
         .submit-btn:hover {
@@ -123,23 +123,23 @@
 
         /* OAuth buttons */
         .oauth-buttons {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
         }
 
         .oauth-btn {
-            font-size: 14px;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 48%;
             padding: 8px 16px;
-            transition: background-color 0.3s;
-            text-decoration: none;
+            width: 48%;
+            background-color: #9146FF; /* Default color for Twitch */
             color: white;
+            font-size: 14px;
             border-radius: 5px;
-            background-color: #9146ff; /* Default color for Twitch */
+            text-decoration: none;
+            justify-content: center;
+            transition: background-color 0.3s;
         }
 
         .oauth-btn img {
@@ -149,11 +149,11 @@
         }
 
         .oauth-btn.twitch-login-btn {
-            background-color: #9146ff; /* Twitch purple */
+            background-color: #9146FF; /* Twitch purple */
         }
 
         .oauth-btn.discord-login-btn {
-            background-color: #7289da; /* Discord blue */
+            background-color: #7289DA; /* Discord blue */
         }
 
         .oauth-btn:hover {
@@ -162,47 +162,90 @@
 
         /* Style for the Login link to look like a button */
         .login-btn {
-            font-size: 16px;
-            font-weight: bold;
-            display: inline-block;
+            padding: 0.5em;
+            color: rgba(167, 122, 0, 0.596);
             margin-top: 3em;
             margin-bottom: 0em;
-            padding: 0.5em;
-            transition: background-color 0.15s ease;
+            display: inline-block;
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px;
+            font-weight: bold;
             text-decoration: none; /* Remove underline */
-            color: rgba(167, 122, 0, 0.596);
+            transition: background-color 0.15s ease;
             border: 2px solid transparent;
             border: 0.15vh solid #926c2581;
-            border-radius: 5px; /* Rounded corners */
-            background-color: rgba(53, 31, 0, 0.288);
             backdrop-filter: blur(1vh);
+            background-color: rgba(53, 31, 0, 0.288);
         }
 
         .user-info-container {
+            padding: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            color: #ffffff85;
+            border-radius: 10px; /* Rounded corners */
             font-size: 16px;
             font-weight: bold;
-            width: fit-content;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0.5em;
-            transition: background-color 0.15s ease;
             text-decoration: none; /* Remove underline */
-            color: #ffffff85;
+            transition: background-color 0.15s ease;
             border: 2px solid transparent;
             border: 0.15vh solid #926c2581;
-            border-radius: 10px; /* Rounded corners */
-            background-color: rgba(53, 31, 0, 0.288);
             backdrop-filter: blur(1vh);
+            background-color: rgba(53, 31, 0, 0.288);
         }
 
         .login-btn:hover {
-            cursor: pointer;
             transform: scale(1.05); /* Leichter Hover-Effekt */
             background-color: #a829972a; /* Slightly darker yellow for hover effect */
+            cursor: pointer;
         }
 
     </style>
-
+    <!-- <style>
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 20px;
+        }
+  
+        /* Styling for the Twitch login button */
+        .twitch-login-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: #9146FF;
+            /* Twitch's purple color */
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: none;
+        }
+  
+        .twitch-login-btn:hover {
+            background-color: #772ce8;
+            /* Darker purple for hover effect */
+        }
+  
+        .twitch-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            /* Adds some space between the icon and the text */
+        }
+  
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .twitch-login-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style> -->
 </head>
 
 <body data-spy="scroll" data-target="#navbar-scroll">
@@ -227,6 +270,16 @@
                     <li><a href="#feature">Über uns</a></li>
                     <li><a href="#B2">Kategorien</a></li>
                     <li><a href="#Phase">Einsenden</a></li>
+
+                    <!-- <li>
+                        <a href="https://id.twitch.tv/oauth2/authorize?client_id=zzds8ws0st10vxfa3568snakvm31m1&redirect_uri=https://smallstreamawards.de&response_type=code&scope=user:read:email"
+                            class="twitch-login-btn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Twitch_Glitch_Logo_Purple.svg"
+                                alt="Twitch Icon" class="twitch-icon">
+                            Login mit Twitch
+                        </a>
+                    </li> -->
+
                     <li>
                         <a id="gewinner-link">Gewinner</a>
                         <img alt="Trophy" id="trophy-image" src="images/lock.png" style="display: none;">
@@ -312,7 +365,7 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase nope">
+            <div class="phase active">
                 <h4>Clip Einsendung</h4>
                 <!-- <i class="icon fas fa-tasks"></i> -->
                 <span>Phase 2
@@ -321,7 +374,7 @@
             <div class="arrow"></div>
         </a>
         <a class="phase-container" href="#Phase">
-            <div class="phase active">
+            <div class="phase">
                 <h4>Voting</h4>
                 <!-- <i class="icon fas fa-chart-line"></i> -->
                 <span>Phase 3</span>
@@ -346,14 +399,14 @@
     </div>
 </div>
 
-
-<div class="phase-info-container" id="phase-info-container">
+<div class="phase-info-container">
     <div class="phase-info">
         <section id="B2"></section>
-        <div class="countdown" id="countdown-section">
+        <div class="countdown">
             <!-- Login button -->
             <a class="login-btn" href="/auth/twitch" id="openLoginPopup" style="display:none;">
-                <img alt="Twitch Icon" class="oauth-icon" height="16" src="images/Twitch.svg" width="16">Login
+                <img alt="Twitch Icon" class="oauth-icon" height="16" src="images/Twitch.svg" width="16">
+                Login
             </a>
 
             <!-- User info (hidden by default) -->
@@ -363,56 +416,72 @@
                     <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i>
                 </a>
             </div>
-            <h1>Vote jetzt für die besten Clips!</h1>
-            <h2>Voting Schluss in:</h2>
-
+            <p>Sende jetzt Clips ein!</p>
+            <h2>Ende der Clip Einsendungen</h2>
             <div id="timer">
                 <span id="days"></span> Tage
                 <span id="hours"></span> Stunden
                 <span id="minutes"></span> Minuten
                 <span id="seconds"></span> Sekunden
             </div>
-
-            <!-- Button to start voting -->
-            <button class="start-voting-btn" id="start-voting-btn">Zum Voting</button>
-
         </div>
 
-        <!-- Voting Content will be inserted dynamically after clicking the "Zum Voting" button -->
-        <div id="voting-container" style="display:none;">
-            <div class="vct" id="voting-category-title">
-                <span class="category-label">KATEGORIE:</span> <span id="category-name">Funny Moment</span>
+        <div class="submission-container">
+            <div class="input-container">
+                <!-- Beispiel für den Clip-Link -->
+                <input id="clip-url" placeholder="https://clips.twitch.tv/..." type="text"/>
+
+                <!-- Kategorie wählen Button -->
+                <div class="dropdown">
+                    <button class="dropbtn" id="category-btn">Kategorie wählen</button>
+                    <div class="dropdown-content" id="dropdown-menu">
+                        <a data-category="Funny Moment" href="#">Funny Moment</a>
+                        <a data-category="Best Rage Moment" href="#">Best Rage Moment</a>
+                        <a data-category="WTF Passiert Hier?!" href="#">WTF Passiert Hier?!</a>
+                        <a data-category="Bester Lost Moment" href="#">Bester Lost Moment</a>
+                        <a data-category="Bester Jumpscare" href="#">Bester Jumpscare</a>
+                    </div>
+                </div>
+
+                <!-- Absenden Button -->
+                <button class="disabled" id="submit-btn">Absenden</button>
             </div>
-            <section class="flex-container flex-column" id="Clip">
-
-                <div id="selected-clip-container" style="display: none;">
-                    <!-- Der ausgewählte Clip wird hier dynamisch eingefügt -->
-                </div>
-                <div class="navigation-buttons">
-                    <button id="prev-category-btn" onclick="SSA.prevCategory()" style="display:none;">Zurück</button>
-                    <button id="next-category-btn" onclick="SSA.nextCategory()">Weiter</button>
-                </div>
-            </section>
-
-
-            <div id="clips-container"></div>
-        </div>
-
-
-        <!-- After voting all categories -->
-        <div class="voting-summary" id="voting-summary" style="display:none;">
-            <h2>Deine gewählten Clips</h2>
-            <ul class="chosen-clips-list" id="chosen-clips-list"></ul>
-            <button class="submit-vote-btn" id="submit-vote-btn" onclick="SSA.submitVote()">Abstimmung absenden</button>
-        </div>
-
-        <!-- After submitting vote -->
-        <div id="thank-you-message" style="display:none;">
-            <h2>Danke fürs Voten!</h2>
-            <p>Du hast bereits abgestimmt. Du kannst nur einmal abstimmen.</p>
         </div>
     </div>
 </div>
+<!-- Neuer Container für Clip-Voraussetzungen -->
+<div class="crc">
+    <div class="requirements-wrapper">
+        <!-- Left Information Container -->
+        <div class="info-container-left">
+            <h4>Statistiken</h4>
+            <ul>
+                <li><span class="stat-number" id="clip-count">+500</span> eingesendete Clips</li>
+                <li><span class="stat-number" id="user-count">+200</span> registrierte User</li>
+            </ul>
+        </div>
+
+        <!-- Main Clip Requirements Container -->
+        <div class="clip-requirements-container">
+            <h3>Voraussetzungen für das Einreichen von Clips</h3>
+            <ul>
+                <li><i class="fas fa-video"></i> Clips müssen eine Länge von mindestens 4 Sekunden haben.</li>
+                <li><i class="fas fa-calendar-alt"></i> Der Clip sollte nicht älter als 12 Monate sein.</li>
+                <li><i class="fas fa-copyright"></i> Es dürfen keine urheberrechtlich geschützten Inhalte enthalten sein.</li>
+                <li><i class="fas fa-stream"></i> Clips sollten in einer passenden Kategorie eingesendet werden.</li>
+                <li><i class="fas fa-shield-alt"></i> Clips müssen die Twitch-Nutzungsbedingungen und Community-Richtlinien einhalten.</li>
+            </ul>
+        </div>
+
+        <!-- Right Information Container -->
+        <button class="info-container-right" onclick="window.location.href='https://forms.gle/qSuY4HoH9T49rmC58'">
+            <!-- <img src="images/ad.png" alt="Wir suchen Verstärkung im SmallStreamAwards Team"> -->
+        </button>
+    </div>
+</div>
+
+</div>
+</section>
 <section id="Kategorie">
     <div class="title-container">
         Preiskategorien
@@ -527,18 +596,18 @@
                         <h4>TheRealJackson</h4>
 
                     </div>
-                    <div class="team-member">
+                    <!-- <div class="team-member">
                         <div class="team-status">
                             <p>Network</p>
                         </div>
                         <a href="https://www.twitch.tv/s4_froschoderso">
-
-                            <img alt="Member 1"
-                                 src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a0f1e53-2f64-4817-a1bd-e3129144ead4-profile_image-70x70.png">
+          
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/2a0f1e53-2f64-4817-a1bd-e3129144ead4-profile_image-70x70.png"
+                                alt="Member 1">
                         </a>
                         <h4>Frosch</h4>
-
-                    </div>
+          
+                    </div> -->
                     <div class="team-member">
                         <div class="team-status">
                             <p>Developer</p>
@@ -549,18 +618,6 @@
                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/3b5d2a34-6960-425f-b7ba-bc9d4f7b6b98-profile_image-70x70.png">
                         </a>
                         <h4>Timo</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <div class="team-status">
-                            <p>Show</p>
-                        </div>
-                        <a href="https://www.twitch.tv/pedaale">
-
-                            <img alt="Member 1"
-                                 src="https://static-cdn.jtvnw.net/jtv_user_pictures/aaa6d17d-0495-4214-ac0d-56a6d79b9695-profile_image-70x70.png">
-                        </a>
-                        <h4>Pedaale</h4>
 
                     </div>
 
@@ -1047,118 +1104,6 @@
                         <h4>vanutella</h4>
 
                     </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/jamy_mit_y">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fe114ba9-d85c-437f-9899-c8c231665347-profile_image-70x70.jpeg">
-                        </a>
-                        <h4>Jamy_mit_Y</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/schmuli__">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/fcb02f70-fd82-4b77-8bc8-f2aa23f9b242-profile_image-70x70.png">
-                        </a>
-                        <h4>schmuli__</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/njushka">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/1bad6844-2c03-4b0b-ab82-1632f420f0a3-profile_image-70x70.png">
-                        </a>
-                        <h4>njushka</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/mommmme">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3fe48061-f230-4802-a9e9-e19375399de6-profile_image-70x70.png">
-                        </a>
-                        <h4>MOMMMME</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/ohayo_vt">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/9a80bbab-01b8-4fcd-b45f-7c4e1a36944b-profile_image-70x70.png">
-                        </a>
-                        <h4>OHAYO_vt</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/nxghtw1tch">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/58b043d8-df56-4651-ba9a-b151f2874913-profile_image-70x70.png">
-                        </a>
-                        <h4>nxghtw1tch</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/knxvilleone">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/34a9b26e-ab31-4d0b-9711-62d2b2ad6dcb-profile_image-70x70.png">
-                        </a>
-                        <h4>knxvilleONE</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/zringraid">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/36aa45de-fea6-4d7a-a078-7cc64299e6cd-profile_image-70x70.png">
-                        </a>
-                        <h4>zRingraid</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/wandellax">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/398f00da-aa7c-4171-8a50-0a6ceb8eb2f1-profile_image-70x70.png">
-                        </a>
-                        <h4>Wandellax</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/itsnax0">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac482095-d5ca-462a-97fe-a47ec466702d-profile_image-70x70.png">
-                        </a>
-                        <h4>itsNax0</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/icyvace">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/1f891da2-59d2-4229-b2c7-a96a5850bfe0-profile_image-70x70.png">
-                        </a>
-                        <h4>icyVACE</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/minooo99_">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/010c0ba6-8bb4-4df0-9e7d-9fa64bfe57ea-profile_image-70x70.jpeg">
-                        </a>
-                        <h4>Minooo99_</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/pixelstefan">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/dd83ddb5-e69c-499b-aec8-0e72ad929ef9-profile_image-70x70.png">
-                        </a>
-                        <h4>pixelstefan</h4>
-
-                    </div>
-                    <div class="team-member">
-                        <a href="https://www.twitch.tv/theseinetv">
-
-                            <img alt="Member 1" src="https://static-cdn.jtvnw.net/jtv_user_pictures/f0b21c61-b025-4c3f-bf85-3f128ee97c86-profile_image-70x70.jpeg">
-                        </a>
-                        <h4>TheSeineTV</h4>
-
-                    </div>
 
 
                 </div>
@@ -1223,71 +1168,6 @@
 </section>  -->
 
 <!-- /.footer -->
-<label class="torch-container">
-    <input checked="checked" type="checkbox"/>
-    <div class="checkmark"></div>
-    <div class="torch">
-        <div class="head">
-            <div class="face top">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="face left">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="face right">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div class="stick">
-            <div class="side side-left">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="side side-right">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
-</label>
-
 <a class="bugy" href="https://docs.google.com/forms/u/0/d/e/1FAIpQLScG-FVDVAo3qGZuGjZ-aCE1B4v9eouf-2tvqjpnLpkx0B35nw/formResponse"><img alt="logo" src="images/bug.png"></a>
 <footer id="footer">
 
@@ -1462,7 +1342,7 @@
 <!-- /.javascript files -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/custom2.js"></script>
+<script src="js/custom.js"></script>
 <script src="js/jquery.sticky.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
@@ -1471,861 +1351,409 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8REJXR93X"></script>
 
 <script type="text/javascript">
-    // Global namespace for functions called from HTML
-    window.SSA = {
-        startVoting: () => {
-            SmallStreamAwards.voting.start();
-        },
+    // jQuery DOM Ready
+    $(document).ready(function () {
+        // Initialize WOW.js
+        new WOW().init();
 
-        nextCategory: () => {
-            SmallStreamAwards.voting.handleNextCategory();
-        },
+        // Lightbox functionality
+        $(document).on('click', '*[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
 
-        prevCategory: () => {
-            SmallStreamAwards.voting.handlePrevCategory();
-        },
+        // Handle Impressum opening and closing
+        $('#openImpressum').on('click', function () {
+            $('#impressumContainer').fadeIn(); // Smooth opening
+        });
 
-        submitVote: () => {
-            SmallStreamAwards.voting.submitVote();
-        }
-    };
+        $('#closeImpressum').on('click', function () {
+            console.log("Schließen-Button wurde geklickt"); // Debugging log
+            $('#impressumContainer').fadeOut(); // Smooth closing
+        });
 
-    function fetchClipMetadata(clipId, $element, callback) {
-        $.ajax( {
-            url: `/api/clip-metadata/${clipId}`,
-            method: 'GET',
-            success: (response) => {
-                if (response.success && response.clipMetadata) {
-                    const metadata = response.clipMetadata;
-
-                    // Update title and streamer name in the element
-                    $element.find( '.clip-title' ).text( metadata.title );
-                    $element.find( '.streamer-name' ).text( metadata.streamerName );
-
-                    // Set profile image if it's part of $element
-                    const $profileImg = $element.find( '.streamer-profile' );
-                    if ($profileImg.length > 0) {
-                        $profileImg.attr( 'src', metadata.profileImageUrl );
-                        $profileImg.attr( 'alt', `${metadata.streamerName} Profile` );
-                        $profileImg.show();
-                    }
-
-                    // Call the callback with metadata if provided
-                    if (callback) {
-                        callback( metadata );
-                    }
-                } else {
-                    console.error( 'Failed to load metadata for clip:', clipId );
-                    $element.find( '.clip-title' ).text( 'Fehler beim Laden' );
-                    $element.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
-                }
-            },
-            error: (error) => {
-                console.error( 'Error fetching clip metadata:', error );
-                $element.find( '.clip-title' ).text( 'Fehler beim Laden' );
-                $element.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
+        // Close Impressum when clicking outside the container
+        $(window).on('click', function (event) {
+            if ($(event.target).is('#impressumContainer')) {
+                $('#impressumContainer').fadeOut();
             }
-        } );
+        });
+
+
+        // Countdown Timer
+        const countdownDate = new Date("Nov 15, 2024 20:00:00").getTime();
+        const countdownFunction = setInterval(function () {
+            const now = new Date().getTime();
+            const timeLeft = countdownDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            $('#days').text(days);
+            $('#hours').text(hours);
+            $('#minutes').text(minutes);
+            $('#seconds').text(seconds);
+
+            if (timeLeft < 0) {
+                clearInterval(countdownFunction);
+                $('#timer').text("Es geht in wenigen Momenten weiter");
+            }
+        }, 1000);
+
+        // Function to start confetti from a specific element
+        function startConfettiFromElement($element) {
+            const rect = $element[0].getBoundingClientRect(); // Get position of the element
+
+            const x = (rect.left + rect.width / 2) / window.innerWidth;  // X-Position relative to viewport
+            const y = (rect.top + rect.height / 2) / window.innerHeight; // Y-Position relative to viewport
+
+            // Start confetti from this position
+            confetti({
+                particleCount: 10,
+                spread: 30,
+                startVelocity: 20,
+                gravity: 1,
+                origin: {x: x, y: y},
+                colors: ['#FFD700'],
+                shapes: ['square']
+            });
+        }
+
+        // Confetti on mouseover on the element with ID 'confetti-trigger'
+        $('#confetti-trigger').on('mouseover', function () {
+            startConfettiFromElement($(this));
+        });
+
+        // Confetti on click on the element with ID 'confetti-trigger'
+        $('#confetti-trigger').on('click', function () {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: {y: 0.6}
+            });
+        });
+    });
+
+    // Google Tag (gtag.js)
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
     }
 
-    // Main application
-    const SmallStreamAwards = {
-        config: {
-            dates: {
-                votingEnd: new Date( "Nov 15, 2024 20:00:00" ).getTime()
-            },
-            apiEndpoints: {
-                auth: '/auth/twitch',
-                userInfo: '/api/user',
-                categories: '/api/prize-categories',
-                categoriesAndClips: '/api/categories-clips',
-                submitVote: '/api/vote-clips'
-            },
-            selectors: {
-                navigation: '#navbar-scroll',
-                countdownSection: '#countdown-section',
-                votingContainer: '#voting-container',
-                votingSummary: '#voting-summary',
-                clipsList: '#clips-container',
-                categoryTitle: '#voting-category-title',
-                selectedClip: '#selected-clip-container',
-                navigationButtons: '.navigation-buttons',
-                timer: '#timer',
-                thankYouMessage: '#thank-you-message'
-            }
-        },
+    gtag('js', new Date());
+    gtag('config', 'G-G8REJXR93X');
+    $(document).ready(function () {
+        // Initialize WOW.js
+        new WOW().init();
 
-        state: {
-            currentPhase: 'voting',
-            selectedClips: {},
-            currentCategoryIndex: 0,
-            categories: [],
-            isLoggedIn: false,
-            hasVoted: false,
-            isLoadingCategories: false
-        },
+        // Function to check if user is logged in
+        function checkLoginStatus() {
+            $.ajax({
+                url: '/api/user', // Fetch user data from backend
+                method: 'GET',
+                success: function (data) {
+                    const $userInfo = $('#user-info');
+                    const $loginButton = $('#openLoginPopup');
+                    const $usernameElement = $('#username');
+                    const $submissionContainer = $('.submission-container');
 
-        init() {
-            $( document ).ready( () => {
-                console.log( 'Initializing Small Stream Awards...' );
-                this.setupComponents();
-                this.bindEvents();
-                this.auth.checkLoginStatus();
-                this.phases.checkCurrentPhase();
-                this.setupAnalytics();
-                this.voting.init();
-            } );
-        },
-
-        setupComponents() {
-            this.navigation.init();
-            this.countdown.init();
-            this.modals.init();
-            this.confetti.init();
-            new WOW().init();
-        },
-
-        bindEvents() {
-            $( '#start-voting-btn' ).on( 'click', () => {
-                console.log( 'Start voting clicked' );
-                this.voting.start();
-            } );
-
-            // Global event handlers
-            $( '.scrollToTop' ).on( 'click', (e) => {
-                e.preventDefault();
-                $( 'html, body' ).animate( {scrollTop: 0}, 800 );
-            } );
-
-            // Handle mobile menu
-            $( '.navbar-toggle' ).on( 'click', function () {
-                $( '.navbar-themers' ).toggleClass( 'in' );
-            } );
-        },
-
-        auth: {
-            checkLoginStatus() {
-                $.ajax( {
-                    url: SmallStreamAwards.config.apiEndpoints.userInfo,
-                    method: 'GET',
-                    success: (data) => this.handleAuthResponse( data ),
-                    error: () => {
-                        console.error( 'Auth check failed' );
-                        this.handleAuthResponse( {user: null} );
-                    }
-                } );
-            },
-
-            handleAuthResponse(data) {
-                const elements = {
-                    userInfo: $( '#user-info' ),
-                    loginButton: $( '#openLoginPopup' ),
-                    username: $( '#username' ),
-                    votingSection: $( '.start-voting-btn' )
-                };
-
-                if (data.user) {
-                    elements.userInfo.show();
-                    elements.loginButton.hide();
-                    elements.votingSection.removeClass( 'blurred' );
-                    elements.username.text( data.user.username );
-                    SmallStreamAwards.state.isLoggedIn = true;
-
-                    // New: Check if user has already voted
-                    this.checkVotingStatus();
-                } else {
-                    elements.votingSection.addClass( 'blurred' );
-                    elements.userInfo.hide();
-                    elements.loginButton.show();
-                    SmallStreamAwards.state.isLoggedIn = false;
-                }
-            },
-
-            // New: Check if user has already voted
-            checkVotingStatus() {
-                $.ajax( {
-                    url: '/api/has-voted',
-                    method: 'GET',
-                    success: (response) => {
-                        if (response.success && response.hasVoted) {
-
-                            SmallStreamAwards.state.hasVoted = true;
-                            $( '#voting-summary' ).hide();
-                            $( '#start-voting-btn' ).hide();
-                            $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
-                            SmallStreamAwards.confetti.triggerConfetti( 'large' );
-                        } else {
-                            SmallStreamAwards.state.hasVoted = false;
-                        }
-                    },
-                    error: (error) => {
-                        console.error( 'Error checking voting status:', error );
-                    }
-                } );
-            }
-        },
-
-        navigation: {
-            init() {
-                this.setupNavigation();
-                this.setupScrollBehavior();
-            },
-
-            setupNavigation() {
-                $( 'a[href^="#"]' ).on( 'click', function (event) {
-                    event.preventDefault();
-                    const target = $( this.getAttribute( 'href' ) );
-                    if (target.length) {
-                        $( 'html, body' ).animate( {
-                            scrollTop: target.offset().top - 80
-                        }, 1000 );
-                    }
-                } );
-            },
-
-            setupScrollBehavior() {
-                $( window ).on( 'scroll', () => {
-                    const scrollPos = $( window ).scrollTop();
-                    $( '.scrollToTop' ).toggleClass( 'visible', scrollPos > 300 );
-                    this.updateActiveNavItem( scrollPos );
-                } );
-            },
-
-            updateActiveNavItem(scrollPos) {
-                $( 'section' ).each( function () {
-                    const sectionTop = $( this ).offset().top - 100;
-                    const sectionBottom = sectionTop + $( this ).height();
-                    const navItem = $( `a[href="#${$( this ).attr( 'id' )}"]` );
-
-                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                        navItem.addClass( 'active' );
+                    if (data.user) {
+                        // User is logged in, display user info
+                        $userInfo.show();
+                        $loginButton.hide();
+                        $submissionContainer.removeClass('blurred');
+                        $usernameElement.text(data.user.username);
                     } else {
-                        navItem.removeClass( 'active' );
+                        // User is not logged in, show login button
+                        $submissionContainer.addClass('blurred');
+                        $userInfo.hide();
+                        $loginButton.show();
                     }
-                } );
-            }
-        },
-
-        countdown: {
-            init() {
-                this.startCountdown();
-            },
-
-            startCountdown() {
-                const updateTimer = () => {
-                    const now = new Date().getTime();
-                    const timeLeft = SmallStreamAwards.config.dates.votingEnd - now;
-
-                    if (timeLeft < 0) {
-                        $( SmallStreamAwards.config.selectors.timer )
-                            .text( "Es geht in wenigen Momenten weiter" );
-                        return;
-                    }
-
-                    const time = this.calculateTimeRemaining( timeLeft );
-                    this.updateDisplay( time );
-                };
-
-                updateTimer();
-                setInterval( updateTimer, 1000 );
-            },
-
-            calculateTimeRemaining(timeLeft) {
-                return {
-                    days: Math.floor( timeLeft / (1000 * 60 * 60 * 24) ),
-                    hours: Math.floor( (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) ),
-                    minutes: Math.floor( (timeLeft % (1000 * 60 * 60)) / (1000 * 60) ),
-                    seconds: Math.floor( (timeLeft % (1000 * 60)) / 1000 )
-                };
-            },
-
-            updateDisplay(time) {
-                $( '#days' ).text( time.days );
-                $( '#hours' ).text( time.hours );
-                $( '#minutes' ).text( time.minutes );
-                $( '#seconds' ).text( time.seconds );
-            }
-        },
-
-        modals: {
-            init() {
-                this.setupImpressum();
-                this.setupLoginModal();
-            },
-
-            setupImpressum() {
-                const $impressum = $( '#impressumContainer' );
-
-                $( '#openImpressum' ).on( 'click', () => $impressum.fadeIn() );
-                $( '#closeImpressum' ).on( 'click', () => $impressum.fadeOut() );
-
-                $( window ).on( 'click', (event) => {
-                    if ($( event.target ).is( '#impressumContainer' )) {
-                        $impressum.fadeOut();
-                    }
-                } );
-            },
-
-            setupLoginModal() {
-                const $loginPopup = $( '#loginPopup' );
-
-                $( '#openLoginPopup' ).on( 'click', () => $loginPopup.show() );
-                $( '#closeLogin' ).on( 'click', () => $loginPopup.hide() );
-
-                $( window ).on( 'click', (event) => {
-                    if (event.target === $loginPopup[0]) {
-                        $loginPopup.hide();
-                    }
-                } );
-            }
-        },
-
-        voting: {
-            init() {
-                console.log( 'Initializing voting system...' );
-                this.bindNavigationEvents();
-                this.fetchCategories();
-            },
-
-
-            start() {
-                console.log( 'Starting voting process...' );
-
-                // Check if user is logged in
-                if (!SmallStreamAwards.state.isLoggedIn) {
-                    console.log( 'User not logged in, showing login popup' );
-                    $( '#openLoginPopup' ).click();
-                    return;
+                },
+                error: function () {
+                    console.error('Error fetching user data');
                 }
-
-                // Check if categories are still loading
-                if (SmallStreamAwards.state.isLoadingCategories) {
-                    console.log( 'Categories still loading, waiting...' );
-                    return;
-                }
-
-                // Check if categories are loaded, if not fetch them
-                if (!SmallStreamAwards.state.categories || SmallStreamAwards.state.categories.length === 0) {
-                    console.log( 'No categories loaded, fetching...' );
-                    this.fetchCategories( () => this.showVotingInterface() );
-                    return;
-                }
-
-                // If user has already voted, show thank you message and trigger confetti
-                if (SmallStreamAwards.state.hasVoted) {
-                    $( '#voting-summary' ).hide();
-                    $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
-                    SmallStreamAwards.confetti.triggerConfetti( 'large' );
-                    return;
-                }
-
-                // Show voting interface if no conditions above were met
-                this.showVotingInterface();
-            },
-
-            showVotingInterface() {
-                console.log( 'Showing voting interface' );
-                $( SmallStreamAwards.config.selectors.countdownSection ).hide();
-                $( SmallStreamAwards.config.selectors.votingContainer ).show();
-                this.loadCurrentCategory();
-            },
-
-            fetchCategories(callback) {
-                if (SmallStreamAwards.state.isLoadingCategories) {
-                    console.log( 'Already loading categories...' );
-                    return;
-                }
-
-                SmallStreamAwards.state.isLoadingCategories = true;
-                console.log( 'Fetching categories...' );
-
-                $.ajax( {
-                    url: SmallStreamAwards.config.apiEndpoints.categoriesAndClips,
-                    method: 'GET',
-                    success: (response) => {
-                        SmallStreamAwards.state.isLoadingCategories = false;
-                        if (response.success) {
-                            console.log( 'Received categories:', response.categories );
-
-                            // Ensure we have all categories
-                            SmallStreamAwards.state.categories = response.categories;
-
-                            // Debug log each category
-                            SmallStreamAwards.state.categories.forEach( category => {
-                                console.log( `Category: ${category.name} (ID: ${category.id})` );
-                                console.log( `Number of clips: ${category.clips ? category.clips.length : 0}` );
-                            } );
-
-                            if (callback) callback();
-                        } else {
-                            console.error( 'Failed to fetch categories:', response.message );
-                        }
-                    },
-                    error: (error) => {
-                        SmallStreamAwards.state.isLoadingCategories = false;
-                        console.error( 'Error fetching categories:', error );
-                    }
-                } );
-            },
-            clearSelectedClipDisplay() {
-                const $selectedClip = $( SmallStreamAwards.config.selectors.selectedClip );
-                $selectedClip.html( `
-        <div class="placeholder-container">
-            <p class="placeholder-text">Bitte wähle einen Clip aus.</p>
-        </div>
-    ` );
-            },
-
-            loadCurrentCategory() {
-                // Clear the previously selected clip display
-                this.clearSelectedClipDisplay();
-
-                const category = SmallStreamAwards.state.categories[SmallStreamAwards.state.currentCategoryIndex];
-                console.log('Loading category:', category);
-                console.log('Current category index:', SmallStreamAwards.state.currentCategoryIndex);
-                console.log('Total categories:', SmallStreamAwards.state.categories.length);
-
-                if (!category) {
-                    console.error('No category found for index:', SmallStreamAwards.state.currentCategoryIndex);
-                    return;
-                }
-
-                this.updateCategoryDisplay(category);
-                this.renderClips(category.clips || []);
-                this.updateNavigationButtons();
-            }
-            ,
-
-            updateCategoryDisplay(category) {
-                $( SmallStreamAwards.config.selectors.categoryTitle ).html( `
-                <span class="category-label">KATEGORIE:</span> 
-                <span id="category-name">${category.name}</span>
-            ` );
-            },
-            renderClips(clips) {
-                console.log( `Rendering ${clips.length} clips for current category` );
-                const $container = $( SmallStreamAwards.config.selectors.clipsList ).empty();
-
-                if (!clips || clips.length === 0) {
-                    $container.html( `
-            <div class="no-clips-message">
-                <p>Keine Clips für diese Kategorie verfügbar.</p>
-            </div>
-        ` );
-                    return;
-                }
-
-                clips.forEach( clip => {
-                    this.createClipElement( clip, $container );
-                } );
-
-                this.enableClipSelection();
-            },
-
-            // createClipElement(clip, $container) {
-            //     // Initial clip element structure with placeholders
-            //     const $clipElement = $(`
-            //                             <div class="clip-item" role="button" tabindex="0" style="cursor: pointer;">
-            //                                 <div class="clip-info">
-            //                                     <img src="" alt="Streamer Profile" class="streamer-profile" style="display: none;" />
-            //                                     <div class="clip-details">
-            //                                         <h3 class="clip-title" title="Lade Titel...">Lade Titel...</h3>
-            //                                         <p class="streamer-name">Lade Streamer...</p>
-            //                                     </div>
-            //                                 </div>
-            //                                 <div class="clip-selection">
-            //                                     <h2 class="selection-text">Klicke, um diesen Clip zu wählen!</h2>
-            //                                     <div class="select-circle" onclick="selectClip('${clip.clipId}', this)">
-            //                                         <span class="cross">✕</span>
-            //                                     </div>
-            //                                 </div>
-            //                             </div>
-            //                         `);
-            //
-            //     $container.append($clipElement);
-            //
-            //     // Fetch metadata for each clip
-            //     $.ajax({
-            //         url: `/api/clip-metadata/${clip.clipId}`,
-            //         method: 'GET',
-            //         success: (response) => {
-            //             if (response.success && response.clipMetadata) {
-            //                 const metadata = response.clipMetadata;
-            //
-            //                 // Update clip title and streamer name
-            //                 $clipElement.find('.clip-title').text(metadata.title).attr('title', metadata.title);
-            //                 $clipElement.find('.streamer-name').text(metadata.streamerName);
-            //
-            //                 // Set profile image and make it visible
-            //                 const $profileImg = $clipElement.find('.streamer-profile');
-            //                 $profileImg.attr('src', metadata.profileImageUrl);
-            //                 $profileImg.attr('alt', `${metadata.streamerName} Profile`);
-            //                 $profileImg.show();
-            //             } else {
-            //                 console.error('Failed to load metadata for clip:', clip.clipId);
-            //             }
-            //         },
-            //         error: (error) => {
-            //             console.error('Error fetching clip metadata:', error);
-            //             $clipElement.find('.clip-title').text('Fehler beim Laden');
-            //             $clipElement.find('.streamer-name').text('Unbekannter Streamer');
-            //         }
-            //     });
-            // },
-
-            createClipElement(clip, $container) {
-                // Placeholder element with an image tag for profile picture
-                const $clipElement = $( `
-        <div class="clip-item" data-clip-id="${clip.clipId}">
-            <div class="clip-info">
-                    <img alt="Streamer Profile" class="streamer-profile" src="" style="display: none;" />
-                <div class="clip-details">
-                    <h3 class="clip-title">Lade Titel...</h3>
-                    <p class="streamer-name">Lade Streamer...</p>
-                </div>
-            </div>
-            <div class="clip-selection">
-                <h2 class="selection-text">Klicke, um diesen Clip zu wählen!</h2>
-                <div class="select-circle">
-                    <span class="cross">&#10005;</span>
-                </div>
-            </div>
-        </div>
-    ` );
-
-                $container.append( $clipElement );
-
-                // Fetch clip metadata from the server
-                $.ajax( {
-                    url: `/api/clip-metadata/${clip.clipId}`,
-                    method: 'GET',
-                    success: (response) => {
-                        if (response.success && response.clipMetadata) {
-                            const metadata = response.clipMetadata;
-                            $clipElement.find( '.clip-title' ).text( metadata.title );
-                            $clipElement.find( '.streamer-name' ).text( metadata.streamerName );
-
-                            // Set profile image and make it visible
-                            const $profileImg = $clipElement.find( '.streamer-profile' );
-                            $profileImg.attr( 'src', metadata.profileImageUrl );
-                            $profileImg.attr( 'alt', `${metadata.streamerName} Profile` );
-                            $profileImg.show();
-                        } else {
-                            console.error( 'Failed to load metadata for clip:', clip.clipId );
-                        }
-                    },
-                    error: (error) => {
-                        console.error( 'Error fetching clip metadata:', error );
-                        $clipElement.find( '.clip-title' ).text( 'Fehler beim Laden' );
-                        $clipElement.find( '.streamer-name' ).text( 'Unbekannter Streamer' );
-                    }
-                } );
-            },
-            enableClipSelection() {
-                $( '.clip-item' ).off( 'click' ).on( 'click', function () {
-                    const clipId = $( this ).data( 'clip-id' );
-                    const categoryClips = SmallStreamAwards.state.categories[SmallStreamAwards.state.currentCategoryIndex].clips;
-                    const clip = categoryClips.find( c => c.clipId === clipId );
-
-                    if (clip) {
-                        SmallStreamAwards.voting.handleClipSelection( clip, this );
-                    }
-                } );
-            },
-
-            handleClipSelection(clip, element) {
-                this.updateSelectedClipDisplay( clip );
-                this.updateSelectionState( clip.clipId );
-                SmallStreamAwards.state.selectedClips[SmallStreamAwards.state.currentCategoryIndex] = clip.clipId;
-                this.enableNextButton();
-            },
-
-            updateSelectedClipDisplay(clip) {
-                const $selectedClip = $(SmallStreamAwards.config.selectors.selectedClip);
-
-                // Show loading placeholder while fetching metadata
-                $selectedClip.html(`
-        <div class="clip-info">
-            <div class="clip-details">
-                <h3 class="clip-title">Loading title...</h3>
-                <p class="streamer-name">Loading streamer...</p>
-            </div>
-        </div>
-        <div class="iframe-container">
-            <p>Loading clip...</p>
-        </div>
-    `).show();
-
-                // Check if metadata is already available
-                if (!clip.title || !clip.streamerName) {
-                    // Fetch metadata if not available, then update the display
-                    fetchClipMetadata(clip.clipId, $selectedClip, (metadata) => {
-                        // Update the clip object with fetched metadata
-                        clip.title = metadata.title;
-                        clip.streamerName = metadata.streamerName;
-
-                        // Call the function again with updated clip object to replace placeholder
-                        this.updateSelectedClipDisplay(clip);
-                    });
-                    return; // Exit to wait for metadata before proceeding with display
-                }
-
-                // Extract the clipId from the URL for embedding
-                const url = clip.clipTitle; // Ensure this is the actual URL containing the clipId
-                const match = url.match(/clip\/([a-zA-Z0-9_-]+)(\?|$)/);
-                const clipId = match ? match[1] : null;
-
-                if (!clipId) {
-                    console.error("Clip ID could not be extracted from URL:", url);
-                    return;
-                }
-
-                // Set the hostname for embedding
-                const hostname = window.location.hostname;
-
-                // Update `selected-clip-container` with fetched title and streamer name
-                $selectedClip.html(`
-        <div class="clip-info">
-            <div class="clip-details">
-                <h3 class="clip-title">${clip.title}</h3> <!-- Use fetched title here -->
-                <p class="streamer-name">${clip.streamerName}</p>
-            </div>
-        </div>
-        <div class="iframe-container">
-            <iframe 
-                src="https://clips.twitch.tv/embed?clip=${clipId}&parent=${hostname}&autoplay=true&muted=false" 
-               allowfullscreen>
-            </iframe>
-        </div>
-    `).show().get(0).scrollIntoView({behavior: "smooth", block: "center"});
-            }
-            ,
-
-            updateSelectionState(clipId) {
-                $( '.clip-item' ).addClass( 'disabled' )
-                    .find( '.select-circle' ).removeClass( 'selected' );
-
-                $( `.clip-item[data-clip-id="${clipId}"]` )
-                    .removeClass( 'disabled' )
-                    .find( '.select-circle' )
-                    .addClass( 'selected' );
-            },
-
-            handleNextCategory() {
-                if (SmallStreamAwards.state.currentCategoryIndex ===
-                    SmallStreamAwards.state.categories.length - 1) {
-                    this.showSummary();
-                } else {
-                    SmallStreamAwards.state.currentCategoryIndex++;
-                    this.loadCurrentCategory();
-                }
-            },
-
-            handlePrevCategory() {
-                if (SmallStreamAwards.state.currentCategoryIndex > 0) {
-                    SmallStreamAwards.state.currentCategoryIndex--;
-                    this.loadCurrentCategory();
-                }
-            },
-
-            updateNavigationButtons() {
-                const $prevBtn = $( '#prev-category-btn' );
-                const $nextBtn = $( '#next-category-btn' );
-                const currentIndex = SmallStreamAwards.state.currentCategoryIndex;
-                const categories = SmallStreamAwards.state.categories;
-
-                // Show or hide the previous button based on the current index
-                $prevBtn.toggle( currentIndex > 0 );
-
-                // Determine if we are at the last category
-                const isLastCategory = currentIndex === categories.length - 1;
-
-                // Set previous button text if there's a previous category
-                if (currentIndex > 0) {
-                    const prevCategoryName = categories[currentIndex - 1].name;
-                    $prevBtn.text( ` ◀◀  ${prevCategoryName} ` );
-                } else {
-                    $prevBtn.text( 'Zurück' ); // Default text if no previous category
-                }
-
-                // Set next button text to either the next category or "Zusammenfassung" if at the end
-                if (isLastCategory) {
-                    $nextBtn.text( 'Zusammenfassung' );
-                } else {
-                    const nextCategoryName = categories[currentIndex + 1].name;
-                    $nextBtn.text( ` ${nextCategoryName}  ▶▶ ` );
-                }
-
-                // Disable the next button if the current category has no selected clip
-                $nextBtn.prop( 'disabled', !SmallStreamAwards.state.selectedClips[currentIndex] );
-            },
-
-            enableNextButton() {
-                $( '#next-category-btn' ).prop( 'disabled', false );
-            },
-
-            showSummary() {
-                const $summary = $( SmallStreamAwards.config.selectors.votingSummary );
-                const $list = $( '#chosen-clips-list' ).empty();
-
-                SmallStreamAwards.state.categories.forEach( (category, index) => {
-                    const clipId = SmallStreamAwards.state.selectedClips[index];
-                    const clip = category.clips.find( c => c.clipId === clipId );
-
-                    if (clip) {
-                        const $summaryElement = this.createSummaryElement( category, clip );
-                        $list.append( $summaryElement );
-                    }
-                } );
-
-                $( SmallStreamAwards.config.selectors.votingContainer ).hide();
-                $summary.show().get( 0 ).scrollIntoView( {behavior: 'smooth'} );
-            }
-            ,
-
-            createSummaryElement(category, clip) {
-                const $summaryElement = $( `
-        <div class="category-container" role="button" tabindex="0">
-            <h3 class="category-title">
-                <span class="category-label">KATEGORIE:</span><br>
-                ${category.name}
-            </h3>
-            <div class="clip-info">
-                <div class="clip-details">
-                    <h4 class="clip-title">Lade Titel...</h4>
-                    <p class="streamer-name">Lade Streamer...</p>
-                </div>
-            </div>
-        </div>
-    ` );
-
-                // Klick-Event hinzufügen, um das iframe im ausgewählten Clip-Bereich anzuzeigen
-                $summaryElement.on( 'click', () => {
-                    this.updateSelectedClipDisplay( clip );
-                } );
-
-                // Clip-Metadaten abrufen und im Element anzeigen
-                fetchClipMetadata( clip.clipId, $summaryElement, (metadata) => {
-                    $summaryElement.find( '.clip-title' ).text( metadata.title );
-                    $summaryElement.find( '.streamer-name' ).text( metadata.streamerName );
-
-
-                } );
-
-                return $summaryElement;
-            }
-            ,
-
-            submitVote() {
-                // Prepare all votes
-                const votes = Object.entries( SmallStreamAwards.state.selectedClips ).map( ([categoryIndex, clipId]) => ({
-                    clip_submission_id: clipId,
-                    prize_category_id: SmallStreamAwards.state.categories[categoryIndex].id
-                }) );
-
-                // Check if we have votes for all categories
-                if (votes.length !== SmallStreamAwards.state.categories.length) {
-                    alert( 'Bitte wähle einen Clip für jede Kategorie aus.' );
-                    return;
-                }
-
-                // Submit all votes at once
-                $.ajax( {
-                    url: SmallStreamAwards.config.apiEndpoints.submitVote,
-                    method: 'POST',
-                    data: JSON.stringify( {votes} ),
-                    contentType: 'application/json',
-                    success: (response) => {
-                        if (response.success) {
-                            $( '#voting-summary' ).hide();
-                            $( SmallStreamAwards.config.selectors.thankYouMessage ).show();
-                            SmallStreamAwards.state.hasVoted = true;
-                            SmallStreamAwards.confetti.triggerConfetti( 'large' );
-                        } else {
-                            alert( 'Fehler beim Abstimmen: ' + response.message );
-                        }
-                    },
-                    error: (error) => {
-                        console.error( 'Error submitting votes:', error );
-                        if (error.responseJSON && error.responseJSON.message) {
-                            alert( 'Fehler: ' + error.responseJSON.message );
-                        } else {
-                            alert( 'Fehler beim Abstimmen. Bitte versuche es später erneut.' );
-                        }
-                    }
-                } );
-            }
-        },
-
-        phases: {
-            checkCurrentPhase() {
-                const now = new Date().getTime();
-                if (now >= SmallStreamAwards.config.dates.votingEnd) {
-                    this.switchToResultsPhase();
-                }
-            },
-
-            switchToResultsPhase() {
-                SmallStreamAwards.state.currentPhase = 'results';
-                $( SmallStreamAwards.config.selectors.countdownSection ).hide();
-                $( SmallStreamAwards.config.selectors.votingContainer ).hide();
-                $( '#results-container' ).show();
-            }
-        },
-
-        confetti: {
-            init() {
-                const $trigger = $( '#confetti-trigger' );
-                if ($trigger.length) {
-                    $trigger.on( 'mouseover', () => this.triggerConfetti( 'small' ) );
-                    $trigger.on( 'click', () => this.triggerConfetti( 'large' ) );
-                }
-            },
-
-            triggerConfetti(size = 'small') {
-                const options = size === 'small' ? {
-                    particleCount: 30,
-                    spread: 50,
-                    origin: {y: 0.6}
-                } : {
-                    particleCount: 100,
-                    spread: 70,
-                    origin: {y: 0.6}
-                };
-
-                confetti( {
-                    ...options,
-                    colors: ['#ffd700', '#ffb347', '#ffa500'],
-                    shapes: ['square', 'circle']
-                } );
-            }
-        },
-
-        setupAnalytics() {
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function () {
-                dataLayer.push( arguments );
-            };
-            gtag( 'js', new Date() );
-            gtag( 'config', 'G-G8REJXR93X' );
+            });
         }
-    };
 
-    // Initialize when document is ready
-    $( document ).ready( () => {
-        // Initialize main application
-        SmallStreamAwards.init();
+        // Call the checkLoginStatus function when the page loads
+        checkLoginStatus();
 
-        // Handle window load events
-        $( window ).on( 'load', () => {
-            $( '.preloader' ).fadeOut( 'slow' );
-        } );
+        // Open the login popup when clicking the login button
+        document.getElementById('openLoginPopup').addEventListener('click', function () {
+            document.getElementById('loginPopup').style.display = 'block';
+        });
 
-        // Handle window resize events
-        $( window ).on( 'resize', () => {
-            // Add any necessary responsive adjustments
-        } );
-    } );
+        // Close the login popup when clicking on the close button
+        document.getElementById('closeLogin').addEventListener('click', function () {
+            document.getElementById('loginPopup').style.display = 'none';
+        });
+
+        // Close the popup when clicking outside the content
+        window.addEventListener('click', function (event) {
+            const modal = document.getElementById('loginPopup');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Lightbox functionality
+        $(document).on('click', '*[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+
+        // Handle Impressum opening and closing
+        $('#openImpressum').on('click', function () {
+            $('#impressumContainer').fadeIn(); // Smooth opening
+        });
+
+        $('#closeImpressum').on('click', function () {
+            $('#impressumContainer').fadeOut(); // Smooth closing
+        });
+
+        // Close Impressum when clicking outside the container
+        $(window).on('click', function (event) {
+            if ($(event.target).is('#impressumContainer')) {
+                $('#impressumContainer').fadeOut();
+            }
+        });
+
+        // Countdown Timer
+
+
+        // Function to start confetti from a specific element
+        function startConfettiFromElement($element) {
+            const rect = $element[0].getBoundingClientRect(); // Get position of the element
+
+            const x = (rect.left + rect.width / 2) / window.innerWidth;  // X-Position relative to viewport
+            const y = (rect.top + rect.height / 2) / window.innerHeight; // Y-Position relative to viewport
+
+            // Start confetti from this position
+            confetti({
+                particleCount: 10,
+                spread: 30,
+                startVelocity: 20,
+                gravity: 1,
+                origin: {x: x, y: y},
+                colors: ['#FFD700'],
+                shapes: ['square']
+            });
+        }
+
+        // Confetti on mouseover on the element with ID 'confetti-trigger'
+        $('#confetti-trigger').on('mouseover', function () {
+            startConfettiFromElement($(this));
+        });
+
+        // Confetti on click on the element with ID 'confetti-trigger'
+        $('#confetti-trigger').on('click', function () {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: {y: 0.6}
+            });
+        });
+    });
+
+    // Google Tag (gtag.js)
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    //
+    // // Kategorie-Button Klick-Event
+    // const categoryBtn = document.querySelector('.dropbtn');
+    // const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+    // const submitBtn = document.getElementById('submit-btn');
+    // let selectedCategory = '';
+    // const clipUrlInput = document.getElementById('clip-url');
+    //
+    // // Kategorie-Auswahl
+    // dropdownLinks.forEach(link => {
+    //     link.addEventListener('click', function (event) {
+    //         event.preventDefault();
+    //         selectedCategory = this.getAttribute('data-category');
+    //         categoryBtn.textContent = `${selectedCategory}`;
+    //
+    //         // Absenden-Button aktivieren
+    //         submitBtn.classList.remove('disabled');
+    //     });
+    // });
+    //
+    // // Absenden-Button
+    // submitBtn.addEventListener('click', function () {
+    //     if (selectedCategory) {
+    //         if (selectedCategory && clipUrlInput.value) {
+    //             alert(`Clip in Kategorie: ${selectedCategory} eingesendet!`);
+    //
+    //             // Zurücksetzen des Buttons und Textfelds nach erfolgreichem Absenden
+    //             categoryBtn.textContent = 'Kategorie wählen';
+    //             submitBtn.classList.add('disabled');
+    //             clipUrlInput.value = ''; // Textfeld zurücksetzen
+    //             selectedCategory = ''; // Kategorie zurücksetzen
+    //         } else {
+    //             alert('Bitte einen Clip-Link einfügen.');
+    //         }
+    //     } else {
+    //         alert('Bitte eine Kategorie auswählen.');
+    //     }
+    // });
+
+
+    // Function to fetch and populate categories
+    function fetchCategories() {
+        $.ajax({
+            url: '/api/prize-categories', // Endpoint to fetch prize categories
+            method: 'GET',
+            success: function (response) {
+                if (response.success && response.categories.length > 0) {
+                    const dropdownMenu = $('#dropdown-menu');
+                    dropdownMenu.empty(); // Clear any existing categories
+
+                    // Add categories dynamically
+                    response.categories.forEach(category => {
+                        const categoryLink = $('<a>')
+                            .attr('href', '#')
+                            .attr('data-category', category.id)
+                            .text(category.name);
+
+                        dropdownMenu.append(categoryLink);
+                    });
+
+                    // Reattach click events to dynamically generated links
+                    attachCategorySelection();
+                }
+            },
+            error: function () {
+                console.error('Error fetching prize categories');
+            }
+        });
+    }
+
+    // Attach category selection event
+    function attachCategorySelection() {
+        const categoryBtn = document.querySelector('.dropbtn');
+        const submitBtn = document.getElementById('submit-btn');
+        let selectedCategory = '';
+        const clipUrlInput = document.getElementById('clip-url');
+
+        // Handle category selection
+        $('#dropdown-menu a').on('click', function (event) {
+            event.preventDefault();
+            selectedCategory = $(this).data('category');
+            categoryBtn.textContent = $(this).text();
+
+            // Enable the submit button when category is selected
+            submitBtn.classList.remove('disabled');
+        });
+
+        // Submit button click event
+        $('#submit-btn').on('click', function () {
+            const clipUrl = clipUrlInput.value;
+
+            if (!clipUrl || !selectedCategory) {
+                alert('Bitte einen Clip-Link und eine Kategorie auswählen.');
+                return;
+            }
+
+            // Submit the clip via AJAX
+            $.ajax({
+                url: '/api/submit-clip',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    clip_url: clipUrl,
+                    prize_category_id: selectedCategory
+                }),
+                success: function (response) {
+                    if (response.success) {
+                        alert('Clip erfolgreich eingesendet!');
+                        clipUrlInput.value = ''; // Reset input field
+                        categoryBtn.textContent = 'Kategorie wählen'; // Reset category button
+                        submitBtn.classList.add('disabled'); // Disable submit button again
+                    } else {
+                        alert('Fehler beim Einsenden des Clips: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error submitting clip:', error);
+                    alert('Ein Fehler ist aufgetreten. Bitte versuche es später erneut.');
+                }
+            });
+        });
+    }
+
+    // Fetch categories on page load
+    fetchCategories();
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const clipTarget = 500;  // Die Zielzahl für Clips
+        const userTarget = 200;  // Die Zielzahl für User
+        const duration = 5000;   // Dauer des Hochzählens in Millisekunden (7 Sekunden)
+
+        function countUp(elementId, target) {
+            const element = document.getElementById(elementId);
+            let startValue = 0;
+            const increment = target / (duration / 100); // Steigerung alle 100ms
+
+            const counter = setInterval(() => {
+                startValue += increment;
+                if (startValue >= target) {
+                    element.textContent = `+${target}`; // Setze das finale Ziel mit einem "+" Zeichen
+                    clearInterval(counter);
+                } else {
+                    element.textContent = `+${Math.floor(startValue)}`;
+                }
+            }, 100); // Alle 100ms aktualisieren
+        }
+
+        countUp('clip-count', clipTarget);
+        countUp('user-count', userTarget);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const rightInfoContainer = document.querySelector('.info-container-right'); // Rechter Container
+        const dropBtn = document.getElementById('category-btn');
+
+        // Funktion zum Setzen des z-index auf -1
+        function disableInteractions() {
+            rightInfoContainer.style.zIndex = '-1';  // z-index auf -1 setzen
+        }
+
+        // Funktion zum Zurücksetzen des z-index auf 1
+        function enableInteractions() {
+            rightInfoContainer.style.zIndex = '1';  // z-index auf 1 zurücksetzen
+        }
+
+        // Ereignis für das Öffnen des Dropdown-Menüs
+        dropBtn.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show'); // Dropdown sichtbar machen
+            if (dropdownMenu.classList.contains('show')) {
+                disableInteractions(); // z-index auf -1 setzen
+            } else {
+                enableInteractions(); // z-index wieder auf 1 setzen
+            }
+        });
+
+        // Schließen des Dropdowns, wenn irgendwo außerhalb geklickt wird
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show');
+                    enableInteractions(); // z-index wiederherstellen, wenn Dropdown geschlossen wird
+                }
+            }
+        });
+    });
+
+
 </script>
 
 </body>

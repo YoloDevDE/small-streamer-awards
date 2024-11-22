@@ -103,20 +103,16 @@ app.get( '/auth/twitch', passport.authenticate( 'twitch' ) );
 
 app.get( '/auth/twitch/callback', passport.authenticate( 'twitch', {
 
-        failureRedirect: '/fail'
-    } ),
-    (req, res) => {
-        req.session.save(() => {
-            const responseDetails = {
-                statusCode: res.statusCode,
-                headersSent: res.headersSent,
-                locals: res.locals,  // Custom properties set in the response
-            };
-            console.log("Response Details:", JSON.stringify(responseDetails, null, 2));
-            res.redirect('/test');
-        });
-    }
- );
+    failureRedirect: '/fail'
+} ), (req, res) => {
+    req.session.save( () => {
+        const responseDetails = {
+            statusCode: res.statusCode, headersSent: res.headersSent, locals: res.locals,  // Custom properties set in the response
+        };
+        console.log( "Response Details:", JSON.stringify( responseDetails, null, 2 ) );
+        res.redirect( '/' );
+    } );
+} );
 
 app.get( '/api/user', (req, res) => {
     const user = req.isAuthenticated() ? req.user : null;
@@ -151,21 +147,20 @@ app.post( '/api/submit-clip', async (req, res) => {
 app.get( '/api/categories-clips', async (req, res) => {
     // First, get all categories
     const categoryQuery = `
-        SELECT id, name 
-        FROM prize_category 
+        SELECT id, name
+        FROM prize_category
         ORDER BY id;
     `;
 
     // Then, get clips for each category
     const clipsQuery = `
-        SELECT 
-            cs.id AS clip_id,
-            cs.clip_url,
+        SELECT DISTINCT cs.clip_url,
+        cs.id AS clip_id,
             cs.prize_category_id,
             pc.name AS category_name
         FROM clip_submissions cs
         JOIN prize_category pc ON pc.id = cs.prize_category_id
-        ORDER BY pc.id;
+        ORDER BY pc.id, cs.clip_url;
     `;
 
     const clipUrlPattern = /twitch\.tv\/([^/]+)\/clip\//;
@@ -333,39 +328,32 @@ app.get( '/api/clip-metadata/:id', async (req, res) => {
 
 
 // Test endpoint
-app.get( '/test', (req, res) => {
-    res.sendFile( path.join( projectRoot, 'public', 'S4TEST.html' ) );
+app.get( '/', (req, res) => {
+    res.sendFile( path.join( projectRoot, 'public', 'index.html' ) );
 } );
 // Endpoint to check if the user has already voted
 app.get( '/api/has-voted', async (req, res) => {
     // Ensure the user is authenticated
     if (!req.isAuthenticated()) {
         return res.status( 401 ).json( {
-            success: false,
-            message: 'User not authenticated'
+            success: false, message: 'User not authenticated'
         } );
     }
 
     try {
         // Query the database to check if the user has any votes recorded
-        const [results] = await pool.execute(
-            'SELECT COUNT(*) AS voteCount FROM clip_vote WHERE twitch_user_id = ?',
-            [req.user.id]
-        );
+        const [results] = await pool.execute( 'SELECT COUNT(*) AS voteCount FROM clip_vote WHERE twitch_user_id = ?', [req.user.id] );
 
         // If voteCount > 0, user has voted, otherwise they haven't
         const hasVoted = results[0].voteCount > 0;
 
         res.json( {
-            success: true,
-            hasVoted
+            success: true, hasVoted
         } );
     } catch (error) {
         console.error( 'Error checking voting status:', error );
         res.status( 500 ).json( {
-            success: false,
-            message: 'Error checking voting status',
-            error
+            success: false, message: 'Error checking voting status', error
         } );
     }
 } );
@@ -375,19 +363,18 @@ app.listen( port, () => {
     console.log( `Server is running on http://localhost:${port}` );
 } );
 
-// // Endpoint to get recent logs
-// app.get( '/api/server-logs', (req, res) => {
-//     // Check if the user is authenticated (optional for added security)
-//     // if (!req.isAuthenticated()) {
-//     //     return res.status(401).json({
-//     //         success: false,
-//     //         message: 'User not authenticated'
-//     //     });
-//     // }
-//
-//     // Return the logs as a response
-//     res.json( {
-//         success: true,
-//         logs: logBuffer
-//     } );
-// } );
+// Endpoint to get recent logs
+app.get( '/api/server-logs', (req, res) => {
+    // Check if the user is authenticated (optional for added security)
+    // if (!req.isAuthenticated()) {
+    //     return res.status(401).json({
+    //         success: false,
+    //         message: 'User not authenticated'
+    //     });
+    // }
+
+    // Return the logs as a response
+    res.json( {
+        success: true, logs: logBuffer
+    } );
+} );
