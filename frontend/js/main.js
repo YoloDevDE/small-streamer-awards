@@ -4,7 +4,7 @@ let remainingImages = []; // Kopie der Bilder zum zufälligen Anzeigen
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        const j = Math.floor( Math.random() * (i + 1) );
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
@@ -85,13 +85,13 @@ function fetchClipMetadata(clipId, $element, callback) {
 }
 
 function displayRandomImage() {
-    const animatedContainer = document.querySelector('.animated-image-container');
+    const animatedContainer = document.querySelector( '.animated-image-container' );
 
     // Check, ob Bilder verfügbar sind
     if (!remainingImages || remainingImages.length === 0) {
-        console.warn("No remaining images. Refilling the image pool.");
+        console.warn( "No remaining images. Refilling the image pool." );
         remainingImages = [...teamMembers]; // Auffüllen
-        shuffle(remainingImages); // Erneut mischen
+        shuffle( remainingImages ); // Erneut mischen
     }
 
     // Nächstes Bild holen
@@ -99,29 +99,29 @@ function displayRandomImage() {
 
     // Null-Check für nextImage
     if (!nextImage || !nextImage.src) {
-        console.error("Invalid image object detected.");
+        console.error( "Invalid image object detected." );
         return;
     }
 
-    const imgElement = document.createElement('img');
+    const imgElement = document.createElement( 'img' );
     imgElement.src = nextImage.src;
     imgElement.alt = "Random team member";
-    imgElement.classList.add('animated-image');
+    imgElement.classList.add( 'animated-image' );
 
     // Positioniere das Bild zufällig innerhalb des Containers
     imgElement.style.top = `${Math.random() * 80}%`;
     imgElement.style.left = `${Math.random() * 80}%`;
 
-    animatedContainer.appendChild(imgElement);
+    animatedContainer.appendChild( imgElement );
 
     // Bild nach 11 Sekunden ausblenden und entfernen
-    setTimeout(() => {
-        imgElement.classList.add('fade-out');
-        setTimeout(() => imgElement.remove(), 2000); // 2s für Fade-Out
-    }, 11000); // Nach 11s starten, insgesamt 13s sichtbar
+    setTimeout( () => {
+        imgElement.classList.add( 'fade-out' );
+        setTimeout( () => imgElement.remove(), 2000 ); // 2s für Fade-Out
+    }, 11000 ); // Nach 11s starten, insgesamt 13s sichtbar
 
     // Nach 2 Sekunden das nächste Bild anzeigen
-    setTimeout(displayRandomImage, 2000);
+    setTimeout( displayRandomImage, 2000 );
 }
 
 // Main application
@@ -182,6 +182,16 @@ const ClipAwards = {
             this.voting.start();
         } );
 
+        $( '#prev-category-btn' ).on( 'click', () => {
+            ClipAwards.voting.handlePrevCategory();
+        } );
+        $( '#next-category-btn' ).on( 'click', () => {
+            ClipAwards.voting.handleNextCategory();
+        } );
+        $( '#submit-vote-btn' ).on( 'click', () => {
+            ClipAwards.voting.submitVote();
+        } );
+
         // Global event handlers
         $( '.scrollToTop' ).on( 'click', (e) => {
             e.preventDefault();
@@ -235,7 +245,7 @@ const ClipAwards = {
                         ClipAwards.state.hasVoted = true;
                         $( '#voting-summary' ).hide();
                         $( '#start-voting-btn' ).hide();
-                        $( '#vote-title' ).empty().html("Dein Vote ist da! 🎉");
+                        $( '#vote-title' ).empty().html( "Dein Vote ist da! 🎉" );
                         $( ClipAwards.config.selectors.thankYouMessage ).show();
                         ClipAwards.confetti.triggerConfetti( 'large' );
                     } else {
@@ -366,7 +376,7 @@ const ClipAwards = {
     voting: {
         init() {
             console.log( 'Initializing voting system...' );
-            // this.bindNavigationEvents();
+            this.bindNavigationEvents();
             this.fetchCategories();
         },
 
@@ -827,6 +837,9 @@ const ClipAwards = {
                     }
                 }
             } );
+        },
+        bindNavigationEvents() {
+            $( '#prev-category-btn' ).on( "click", )
         }
     },
 
