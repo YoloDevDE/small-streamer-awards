@@ -235,6 +235,7 @@ const ClipAwards = {
                         ClipAwards.state.hasVoted = true;
                         $( '#voting-summary' ).hide();
                         $( '#start-voting-btn' ).hide();
+                        $( '#vote-title' ).empty().html("Dein Vote ist da! 🎉");
                         $( ClipAwards.config.selectors.thankYouMessage ).show();
                         ClipAwards.confetti.triggerConfetti( 'large' );
                     } else {
