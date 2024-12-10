@@ -26,7 +26,7 @@ console.log = (function (originalLog) {
 // Middleware to parse incoming request bodies
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( {extended: true} ) );
-app.use( express.static( path.join( projectRoot, 'public' ) ) );
+app.use( express.static( path.join( projectRoot, 'frontend' ) ) );
 
 // Database connection pool
 const pool = mysql.createPool( {
@@ -155,11 +155,11 @@ app.get( '/api/categories-clips', async (req, res) => {
     // Then, get clips for each category
     const clipsQuery = `
         SELECT DISTINCT cs.clip_url,
-        cs.id AS clip_id,
-            cs.prize_category_id,
-            pc.name AS category_name
+                        cs.id AS clip_id,
+                        cs.prize_category_id,
+                        pc.name AS category_name
         FROM clip_submissions cs
-        JOIN prize_category pc ON pc.id = cs.prize_category_id
+                 JOIN prize_category pc ON pc.id = cs.prize_category_id
         ORDER BY pc.id, cs.clip_url;
     `;
 
@@ -361,20 +361,4 @@ app.get( '/api/has-voted', async (req, res) => {
 // Start the server
 app.listen( port, () => {
     console.log( `Server is running on http://localhost:${port}` );
-} );
-
-// Endpoint to get recent logs
-app.get( '/api/server-logs', (req, res) => {
-    // Check if the user is authenticated (optional for added security)
-    // if (!req.isAuthenticated()) {
-    //     return res.status(401).json({
-    //         success: false,
-    //         message: 'User not authenticated'
-    //     });
-    // }
-
-    // Return the logs as a response
-    res.json( {
-        success: true, logs: logBuffer
-    } );
 } );

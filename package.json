@@ -2,10 +2,10 @@
   "name": "smallstreamerawards",
   "version": "1.0.0",
   "description": "Platform for managing awards for small streamers",
-  "main": "server/server.js",
+  "main": "backend/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
